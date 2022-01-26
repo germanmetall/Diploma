@@ -1,4 +1,4 @@
-### Lada's financial courses
+### Diploma
 
 Contains two folders:
 
