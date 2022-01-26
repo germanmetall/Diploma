@@ -1,0 +1,47 @@
+@import "../styles/variables.scss";
+
+@font-face {
+    font-family: "Playfair-Medium";
+    src: url("../assets/fonts/PlayfairDisplay-Medium.ttf");
+}
+@font-face {
+    font-family: "Playfair-Regular";
+    src: url("../assets/fonts/PlayfairDisplay-Regular.ttf");
+}
+@font-face {
+    font-family: "FiraSans-Light";
+    src: url("../assets/fonts/FiraSans-Light.ttf");
+}
+
+*{
+    font-family: "FiraSans-Light";
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.page{
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: map-get($colors, "bg2");
+}
+.main{
+    width: 100%;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 64px 0;
+}
+.heading{
+    font-family: "Playfair-Medium";
+    &--small{
+        font-size: 1.75rem;
+    }
+    &--medium{
+        font-size: 2.25rem;
+    }
+    &--big{
+        font-size: 3rem;
+    }
+}

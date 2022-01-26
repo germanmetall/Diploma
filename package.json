@@ -1,0 +1,12 @@
+{
+    "name": "couses",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "CMS": "cd CMS && npm run develop",
+      "serve": "cd front && npm run serve"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+  }
+  
