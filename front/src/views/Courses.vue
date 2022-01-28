@@ -4,6 +4,7 @@
 
 		<main class="main" v-if="courses">
 			<article class="course" v-for="course of courses" :key="course">
+				<img class="course__teacher" src="https://media-exp1.licdn.com/dms/image/C5603AQEhf8fpKRLYYQ/profile-displayphoto-shrink_800_800/0/1642147918037?e=1648684800&v=beta&t=ugsyrk07mzYFiSYTSNjSlYUjJLhWurgNhFLVi5p7R10"/>
 				<span class="heading heading--medium">{{course.attributes.Heading}}</span>
 				<section class="course__info">
 					<span class="course__text" v-html="course.attributes.Description_short"></span>
@@ -54,6 +55,7 @@ export default {
 }
 
 .course{
+	position: relative;
 	width: 100%;
 	background: map-get($colors, "bg1");
 	@include card();
@@ -62,6 +64,18 @@ export default {
 		padding: 0 24px 8px;
 		transition: map-get($transitions, "ultra");
 		border-bottom: 2px double map-get($colors, "black");
+	}
+	&__info{
+		position: relative;
+	}
+	&__teacher{
+		position: absolute;
+		top: -24px;
+		right: -24px;
+		width: 96px;
+		height: 96px;
+		background: chocolate;
+		border-radius: 100%;
 	}
 	&__text{
 		font-size: 1.25rem;
@@ -79,7 +93,10 @@ export default {
 		content: " грн";
 	}
 	&__more{
+		border-radius: 24px 0 0 0;
 		&:hover{
+			$one: 20%;
+			$two: 10%;
 			background: map-get($colors, "bg3");
 		}
 	}

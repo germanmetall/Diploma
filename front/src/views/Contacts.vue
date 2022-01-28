@@ -44,6 +44,7 @@ export default {
 		let resp = await this.$options.API.data().Contacts.get();
 		let body = await resp.json();
 		this.contacts = body.data;
+		console.log(body);
 	}
 }
 </script>
@@ -68,5 +69,8 @@ export default {
 	background: map-get($colors, "bg1");
 	font-size: 1.25rem;
 	cursor: pointer;
+	&__image{
+		width: 96px;
+	}
 }
 </style>

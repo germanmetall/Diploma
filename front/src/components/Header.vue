@@ -16,10 +16,8 @@ export default {
         let currTitle = this.$route.meta.title;
         let elems = document.querySelectorAll(".nav__item");
         let newArr = Array.from(elems).filter(el => {
-            console.log(el.innerText, currTitle);
             return el.innerText == currTitle
         });
-        console.log(newArr);
         if(newArr[0]) newArr[0].classList.add("active");
     }
 }
