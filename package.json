@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
       "CMS": "cd CMS && npm run develop",
-      "serve": "cd front && npm run serve"
+      "serve-landing": "cd front/front-landing && npm run serve",
+      "serve-platform": "cd front/front-platform && npm run serve"
     },
     "dependencies": {},
     "devDependencies": {}

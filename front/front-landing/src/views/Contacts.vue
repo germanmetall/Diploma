@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/global.scss";
-@import "../styles/variables.scss";
+@import "../../../variables.scss";
 @import "../styles/mixins.scss";
 
 .contacts{

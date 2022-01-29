@@ -53,7 +53,7 @@ const router = createRouter({
   routes
 })
 
-const DEFAULT_TITLE = 'Курсы Владиславы';
+const DEFAULT_TITLE = 'Курсы';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || DEFAULT_TITLE;
   next();

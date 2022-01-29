@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/global.scss";
-@import "../styles/variables.scss";
+@import "../../../variables.scss";
 
 .main{
 	max-width: unset;

@@ -4,7 +4,11 @@ Contains two folders:
 
 * CMS - for backend
 
-* front - for frontend
+* front - for frontend:
+
+    * front-landing - for landing
+
+    * front-platform - for platform
 
 This is one git repository.
 
@@ -16,10 +20,18 @@ Do this:
 
 `npm run develop`
 
-## To access Vue
+## To access landing
 
 Do this:
 
-`cd front`
+`cd front/front-landing`
+
+`npm run serve`
+
+## To access platform
+
+Do this:
+
+`cd front/front-platform`
 
 `npm run serve`
