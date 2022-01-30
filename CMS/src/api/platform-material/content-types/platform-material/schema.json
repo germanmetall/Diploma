@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platform_materials",
+  "info": {
+    "singularName": "platform-material",
+    "pluralName": "platform-materials",
+    "displayName": "Platform Material"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Text": {
+      "type": "richtext"
+    },
+    "Included_files": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

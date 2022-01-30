@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platform_events",
+  "info": {
+    "singularName": "platform-event",
+    "pluralName": "platform-events",
+    "displayName": "Platform Event"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Text": {
+      "type": "richtext"
+    },
+    "Date": {
+      "type": "datetime"
+    }
+  }
+}

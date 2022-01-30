@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platform_tasks",
+  "info": {
+    "singularName": "platform-task",
+    "pluralName": "platform-tasks",
+    "displayName": "Platform tasks",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "platform_tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::platform-one-task.platform-one-task"
+    }
+  }
+}

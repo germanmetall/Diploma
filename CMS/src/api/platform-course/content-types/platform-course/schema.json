@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platform_courses",
+  "info": {
+    "singularName": "platform-course",
+    "pluralName": "platform-courses",
+    "displayName": "Platform Course",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Schedule": {
+      "type": "string"
+    },
+    "teacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::platform-user.platform-user"
+    },
+    "students": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::platform-user.platform-user"
+    },
+    "platform_events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::platform-event.platform-event"
+    },
+    "platform_materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::platform-material.platform-material"
+    },
+    "platform_task": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::platform-task.platform-task"
+    }
+  }
+}

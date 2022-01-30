@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platform_users",
+  "info": {
+    "singularName": "platform-user",
+    "pluralName": "platform-users",
+    "displayName": "Platform User",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Contacts": {
+      "type": "text"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
