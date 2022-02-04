@@ -41,10 +41,17 @@
       "relation": "oneToMany",
       "target": "api::platform-material.platform-material"
     },
-    "platform_task": {
+    "platform_tasks": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::platform-task.platform-task"
+    },
+    "Avatar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

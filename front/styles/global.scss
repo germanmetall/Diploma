@@ -1,16 +1,17 @@
-@import "../../../variables.scss";
+@import "./variables.scss";
+@import "./mixins.scss";
 
 @font-face {
     font-family: "Playfair-Medium";
-    src: url("../assets/fonts/PlayfairDisplay-Medium.ttf");
+    src: url("/fonts/PlayfairDisplay-Medium.ttf");
 }
 @font-face {
     font-family: "Playfair-Regular";
-    src: url("../assets/fonts/PlayfairDisplay-Regular.ttf");
+    src: url("/fonts/PlayfairDisplay-Regular.ttf");
 }
 @font-face {
     font-family: "FiraSans-Light";
-    src: url("../assets/fonts/FiraSans-Light.ttf");
+    src: url("/fonts/FiraSans-Light.ttf");
 }
 
 *{

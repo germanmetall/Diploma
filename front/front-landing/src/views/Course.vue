@@ -72,10 +72,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/global.scss";
-@import "../../../variables.scss";
-@import "../styles/mixins.scss";
-
 .course{
 	width: 100%;
 	background: map-get($colors, "bg1");

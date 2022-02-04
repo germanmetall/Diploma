@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Auth from '../views/Auth.vue'
 import Home from '../views/Home.vue'
+import Course from '../views/Course.vue'
 import Courses from '../views/Courses.vue'
 import Profile from '../views/Profile.vue'
 
@@ -30,9 +31,9 @@ const routes = [
     }
   },
   {
-    path: '/courses/:id',
+    path: '/course/:id',
     name: 'Course',
-    component: Courses,
+    component: Course,
     meta: {
       title: "Курс"
     }
@@ -50,6 +51,12 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+const DEFAULT_TITLE = 'Курсы';
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || DEFAULT_TITLE;
+  next();
 })
 
 export default router

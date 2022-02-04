@@ -1,10 +1,10 @@
 <template>
 	<header class="header">
 		<nav class="nav">
-            <router-link class="nav__item" to="/">Главная</router-link>
-            <router-link class="nav__item" to="/courses">Курсы</router-link>
-            <router-link class="nav__item" to="/faq">Вопросы</router-link>
-            <router-link class="nav__item" to="/contacts">Контакты</router-link>
+            <router-link class="nav__item heading heading--big" to="/">Главная</router-link>
+            <router-link class="nav__item heading heading--big" to="/courses">Курсы</router-link>
+            <router-link class="nav__item heading heading--big" to="/faq">Вопросы</router-link>
+            <router-link class="nav__item heading heading--big" to="/contacts">Контакты</router-link>
         </nav>
 	</header>
 </template>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../variables.scss";
+@import "../../../styles/global.scss";
 .header{
     position: relative;
     z-index: 2;
@@ -53,15 +53,13 @@ export default {
     background: map-get($colors, "bg1");
     border-radius: 0 0 48px 48px;
     &__item{
-        font-size: 2rem;
-        font-family: "Playfair-Regular";
         text-decoration: unset;
         color: map-get($colors, "black");
         transition: map-get($transitions, "fast");
     }
 }
 .active{
-    font-size: 2.75rem;
+	font-size: 3.75rem;
     text-shadow: 0 0 4px map-get($colors, "shadow2");
 }
 </style>

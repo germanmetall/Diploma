@@ -5,24 +5,51 @@
 			<section class="course" v-if="course">
 				
                 <nav class="nav">
-                    <span class="nav__item">Главная</span>
-                    <span class="nav__item">Материалы</span>
-                    <span class="nav__item">Задания</span>
-                    <span class="nav__item">Ученики</span>
+                    <span class="nav__item heading heading--medium active" @click="switchTab(0)">Главная</span>
+                    <span class="nav__item heading heading--medium" @click="switchTab(1)">Материалы</span>
+                    <span class="nav__item heading heading--medium" @click="switchTab(2)">Задания</span>
+                    <span class="nav__item heading heading--medium" @click="switchTab(3)">Ученики</span>
                 </nav>
 
-                <article class="course__description"></article>
+                <span class="course__description">
+					{{course.attributes.Description}}
+					<br/>
+					{{course.attributes.Schedule}}
+				</span>
 
-                <section class="course__events">
+                <div class="course__tab active">
 
-                    <article class="event">
-                        <span class="event__description"></span>
-                        <time class="event__date"></time>
+                    <article class="event" v-for="event of course.attributes.platform_events.data" :key="event">
+                        <span class="event__description heading heading--small">{{event.attributes.Text}}</span>
+                        <time class="event__date">{{event.attributes.Date}}</time>
                     </article>
 
-                </section>
+                </div>
 
-                <img src="" class="course__avatar"/>
+				<div class="course__tab">
+					
+					<article class="material" v-for="material of course.attributes.platform_materials.data" :key="material">
+                        <span class="material__name heading heading--small">{{material.attributes.Name}}</span>
+                        <span class="material__text">{{material.attributes.Text}}</span>
+						
+						<div class="file" v-for="file of material.attributes.Included_files.data" :key="file" @click="donwloadFromUrl(`http://localhost:1337${file.attributes.url}`, file.attributes.name)">
+							<img class="file__img" src=""/>
+							<span class="file__name">{{file.attributes.name}}</span>
+						</div>
+                    </article>
+
+				</div>
+				<div class="course__tab">3</div>
+				<div class="course__tab">
+
+					<article class="student" v-for="student of course.attributes.students.data" :key="student">
+						<img class="student__avatar" :src="`http://localhost:1337${student.attributes.avatar.data[0].attributes.url}`"/>
+                        <span class="student__name heading heading--small">{{student.attributes.Name}}</span>
+                    </article>
+
+				</div>
+
+                <img class="course__teacherAvatar"/>
 			</section>
 		</main>
 	</div>
@@ -42,32 +69,164 @@ export default {
 	data: function() {
 		return {
 			id: this.$route.params.id,
-			payData: undefined,
-			course: undefined
+			course: undefined,
+			teacherAvatar: undefined
 		};
 	},
 	methods: {
-		ok(e){
-			console.log(e);
+		async donwloadFromUrl(url, name){
+			let resp = await fetch(url);
+			let body = await resp.blob();
+			let file = window.URL.createObjectURL(body);
+			let link = document.createElement("a");
+			link.download = name;
+			link.href = file;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
 		},
-		error(e){
-			console.log(e);
+		switchTab(num){
+			document.querySelectorAll(".course .nav__item").forEach((el, i) => {
+				if(i==num) el.classList.add("active");
+				else el.classList.remove("active");
+			});
+			document.querySelectorAll(".course__tab").forEach((el, i) => {
+				if(i==num) el.classList.add("active");
+				else el.classList.remove("active");
+			});
 		}
 	},
 	mounted: async function() {
 		let resp = await this.$options.API.data().Courses.getById(this.id);
 		let body = await resp.json();
 		this.course = body.data;
-		
+		console.log(this.course);
+		const reader = new FileReader();
+		reader.onload = (e) => {
+			// convert image file to base64 string
+			this.teacherAvatar = reader.result;
+			document.querySelector(".course__teacherAvatar").src = this.teacherAvatar;
+		};
+		let file = await fetch(`http://localhost:1337${this.course.attributes.teacher.data.attributes.avatar.data[0].attributes.url}`);
+		reader.readAsDataURL(await file.blob());
 	}
 }
 </script>
 
-<style lang="scss" scoped>
-@import "../styles/global.scss";
-@import "../../../variables.scss";
-@import "../styles/mixins.scss";
-
+<style lang="scss">
+@import "../../../styles/global.scss";
+body{
+	overflow-y: scroll;
+}
 .course{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 24px;
+	background: map-get($colors, "bg1");
+	border-radius: 24px;
+	&__description{
+		font-size: 1.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 6vh;
+		padding: 24px 0;
+		background: map-get($colors, "bg3");
+	}
+	&__tab{
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 24px 0;
+		background: gray;
+		&.active{
+			display: flex;
+		}
+	}
+	&__teacherAvatar{
+		z-index: 5;
+		position: absolute;
+		top: 48px;
+		right: 48px;
+		width: 100px;
+		border-radius: 50%;
+	}
+}
+.nav{
+	padding: 24px;
+	width: 80%;
+	min-height: 3.75rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    align-self: flex-start;
+	&__item{
+		transition: map-get($transitions, "fast");
+		cursor: pointer;
+		&.active{
+			font-size: 3.25rem;
+			text-shadow: 0 0 4px map-get($colors, "shadow2");
+		}
+	}
+}
+.event{
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	margin: 24px auto;
+	background: red;
+	padding: 12px;
+	border-radius: 24px;
+	&__description{
+		margin-bottom: 24px;
+	}
+	&__date{
+		text-align: right;
+		font-size: 1.25rem;
+	}
+}
+.material{
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	margin: 24px auto;
+	background: red;
+	padding: 12px;
+	border-radius: 24px;
+	.file{
+		background: blue;
+		margin: 24px auto;
+		padding: 12px;
+		border-radius: 24px;
+		cursor: pointer;
+	}
+}
+.task{
+
+}
+.student{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 60%;
+	margin: 24px auto;
+	background: red;
+	padding: 12px;
+	border-radius: 24px;
+	&__avatar{
+		width: 96px;
+		border-radius: 50%;
+	}
+	&__name{
+		text-align: left;
+		width: 75%;
+	}
 }
 </style>

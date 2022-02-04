@@ -52,10 +52,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/global.scss";
-@import "../../../variables.scss";
-@import "../styles/mixins.scss";
-
 .FAQ{
 	display: flex;
 	flex-direction: column;
