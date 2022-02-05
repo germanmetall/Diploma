@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Course from '../views/Course.vue'
 import Courses from '../views/Courses.vue'
 import Profile from '../views/Profile.vue'
+import Tasks from '../views/Tasks.vue'
 
 const routes = [
   {
@@ -43,7 +44,15 @@ const routes = [
     name: 'Profile',
     component: Profile,
     meta: {
-      title: "Личный кабинет"
+      title: "Профиль"
+    }
+  },
+  {
+    path: '/course/:courseId/tasks/:id',
+    name: 'Tasks',
+    component: Tasks,
+    meta: {
+      title: "Задание"
     }
   }
 ]

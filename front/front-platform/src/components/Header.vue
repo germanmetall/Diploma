@@ -4,7 +4,8 @@
             <router-link class="nav__item heading heading--big" to="/">Главная</router-link>
             <router-link class="nav__item heading heading--big" to="/courses">Мои курсы</router-link>
             <router-link class="nav__item heading heading--big" to="/profile">
-              	<img src="" class="nav__avatar"/>
+              	<span>Профиль</span>
+				<img src="" class="nav__avatar"/>
             </router-link>
         </nav>
 	</header>

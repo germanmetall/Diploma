@@ -39,7 +39,11 @@
                     </article>
 
 				</div>
-				<div class="course__tab">3</div>
+				<div class="course__tab">
+					<router-link class="task" v-for="task of course.attributes.platform_tasks.data" :key="task" :to="{ name: 'Tasks', params: { courseId: course.id, id: task.id }}">
+						{{task.attributes.Name}}
+					</router-link>
+				</div>
 				<div class="course__tab">
 
 					<article class="student" v-for="student of course.attributes.students.data" :key="student">
@@ -57,6 +61,7 @@
 
 <script>
 import Header from "../components/Header.vue";
+import Tasks from "./Tasks.vue";
 let md = require('markdown-it')({
 	html: true
 });
@@ -226,7 +231,8 @@ body{
 	}
 	&__name{
 		text-align: left;
-		width: 75%;
+		width: 100%;
+		padding: 0 24px;
 	}
 }
 </style>
