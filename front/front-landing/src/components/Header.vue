@@ -31,7 +31,6 @@ export default {
     top: 0;
     left: 0;
     width: 80vw;
-    height: 100px;
     margin: 0 auto;
     filter: drop-shadow(0 4px 2px map-get($colors, "shadow1"));
     transition: map-get($transitions, "ultra");

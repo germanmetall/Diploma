@@ -4,11 +4,11 @@
 		<main class="main">
 			<section class="course" v-if="course">
 				
-                <nav class="nav">
-                    <span class="nav__item heading heading--medium active" @click="switchTab(0)">Главная</span>
-                    <span class="nav__item heading heading--medium" @click="switchTab(1)">Материалы</span>
-                    <span class="nav__item heading heading--medium" @click="switchTab(2)">Задания</span>
-                    <span class="nav__item heading heading--medium" @click="switchTab(3)">Ученики</span>
+                <nav class="courseNav">
+                    <span class="courseNav__item heading heading--medium active" @click="switchTab(0)">Главная</span>
+                    <span class="courseNav__item heading heading--medium" @click="switchTab(1)">Материалы</span>
+                    <span class="courseNav__item heading heading--medium" @click="switchTab(2)">Задания</span>
+                    <span class="courseNav__item heading heading--medium" @click="switchTab(3)">Ученики</span>
                 </nav>
 
                 <span class="course__description">
@@ -91,7 +91,7 @@ export default {
 			document.body.removeChild(link);
 		},
 		switchTab(num){
-			document.querySelectorAll(".course .nav__item").forEach((el, i) => {
+			document.querySelectorAll(".course .courseNav__item").forEach((el, i) => {
 				if(i==num) el.classList.add("active");
 				else el.classList.remove("active");
 			});
@@ -163,7 +163,7 @@ body{
 		border-radius: 50%;
 	}
 }
-.nav{
+.courseNav{
 	padding: 24px;
 	width: 80%;
 	min-height: 3.75rem;
