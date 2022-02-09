@@ -40,7 +40,7 @@
 
 				</div>
 				<div class="course__tab">
-					<router-link class="task" v-for="task of course.attributes.platform_tasks.data" :key="task" :to="{ name: 'Tasks', params: { courseId: course.id, id: task.id }}">
+					<router-link class="task heading heading--medium" v-for="task of course.attributes.platform_tasks.data" :key="task" :to="{ name: 'Tasks', params: { courseId: course.id, id: task.id }}">
 						{{task.attributes.Name}}
 					</router-link>
 				</div>
@@ -124,6 +124,7 @@ body{
 	overflow-y: scroll;
 }
 .course{
+	@include card();
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -131,7 +132,6 @@ body{
 	align-items: center;
 	margin: 24px;
 	background: map-get($colors, "bg1");
-	border-radius: 24px;
 	&__description{
 		font-size: 1.5rem;
 		display: flex;
@@ -149,7 +149,7 @@ body{
 		align-items: center;
 		width: 100%;
 		padding: 24px 0;
-		background: gray;
+		background: map-get($colors, "bg1");
 		&.active{
 			display: flex;
 		}
@@ -181,13 +181,13 @@ body{
 	}
 }
 .event{
+	@include card();
+	@include cardHover();
 	display: flex;
 	flex-direction: column;
 	width: 60%;
-	margin: 24px auto;
-	background: red;
+	background: map-get($colors, "bg3");
 	padding: 12px;
-	border-radius: 24px;
 	&__description{
 		margin-bottom: 24px;
 	}
@@ -197,34 +197,45 @@ body{
 	}
 }
 .material{
+	@include card();
+	@include cardHover();
 	display: flex;
 	flex-direction: column;
 	width: 60%;
-	margin: 24px auto;
-	background: red;
+	background: map-get($colors, "bg3");
 	padding: 12px;
-	border-radius: 24px;
 	.file{
-		background: blue;
 		margin: 24px auto;
 		padding: 12px;
-		border-radius: 24px;
+		border: 2px solid map-get($colors, "black");
+		transition: map-get($transitions, "fast");
+		border-radius: 24px 24px 0 0;
 		cursor: pointer;
+		&:hover{
+			border: 2px solid map-get($colors, "bg2");
+			color: map-get($colors, "bg2");
+		}
 	}
 }
 .task{
-
+	@include card();
+	@include cardHover();
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	background: map-get($colors, "bg3");
+	padding: 12px;
 }
 .student{
+	@include card();
+	@include cardHover();
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	width: 60%;
-	margin: 24px auto;
-	background: red;
+	background: map-get($colors, "bg3");
 	padding: 12px;
-	border-radius: 24px;
 	&__avatar{
 		width: 96px;
 		border-radius: 50%;

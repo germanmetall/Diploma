@@ -25,10 +25,15 @@ body{
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background: map-get($colors, "bg2");
+    background: linear-gradient(
+        to bottom,
+        map-get($colors, "bg2"),
+        lighten(map-get($colors, "bg2"), 20%)
+    );
+    background-attachment: fixed;
 }
 .main{
-    width: 100%;
+    width: 90%;
     position: relative;
     max-width: 1000px;
     margin: 0 auto;

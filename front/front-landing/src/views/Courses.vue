@@ -44,6 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../styles/global.scss";
 .main{
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);

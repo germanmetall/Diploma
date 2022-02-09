@@ -35,37 +35,37 @@
 class MathNotation{
 
     splitByOperations(){
-        return this.str.split(/\+|\-|\*|\//);
+        return this.str.split(/\+|\-|\*|\/|\^/);
     }
 
     isConst(){
-        let regex = /(^PI$)|(^E$)|(^PHI$)/g;
         let splittedStr = this.splitByOperations();
         let res = [];
         splittedStr.forEach(el => {
-            let strWithoutParentheses = el.replace(/\(|\)/,"");
+            let regex = /(^PI$)|(^E$)|(^PHI$)/g;
+            let strWithoutParentheses = el.replace(/\(/,"").replace(/\)/, "");
             res.push(regex.test(strWithoutParentheses));
         });
         return res;
     }
 
     isVariable(){
-        let regex = /(^x$)|(^y$)|(^z$)/g;
         let splittedStr = this.splitByOperations();
         let res = [];
         splittedStr.forEach(el => {
-            let strWithoutParentheses = el.replace(/\(|\)/,"");
+            let regex = /(^\x$)|(^y$)|(^z$)/g;
+            let strWithoutParentheses = el.replace(/\(/,"").replace(/\)/, "");
             res.push(regex.test(strWithoutParentheses));
         });
         return res;
     }
 
     isNumber(){
-        let regex= /^\d+$/;
         let splittedStr = this.splitByOperations();
         let res = [];
         splittedStr.forEach(el => {
-            let strWithoutParentheses = el.replace(/\(|\)/,"");
+            let regex= /^\d+$/;
+            let strWithoutParentheses = el.replace(/\(/,"").replace(/\)/, "");
             res.push(regex.test(strWithoutParentheses));
         });
         return res;
@@ -219,8 +219,11 @@ export default {
 <style lang="scss">
 @import "../../../styles/global.scss";
 .notations{
+    position: relative;
     display: flex;
     flex-direction: row;
+    height: 60px;
+    z-index: 2;
 }
 .notation{
     border: 2px solid #000000;
@@ -233,9 +236,10 @@ export default {
         background: map-get($colors, "bg3");
     }
     &__container{
+        @include card();
+        @include cardHover();
         display: flex;
         flex-direction: column;
-        position: relative;
         margin: 12px;
         &:hover{
             .notation__dropdown{
@@ -244,11 +248,15 @@ export default {
         }
     }
     &__type{
+        @include card();
+        margin: 0;
         padding: 12px;
-        border: 2px solid #000;
         background: #fff;
-        border-radius: 4px;
         cursor: pointer;
+        transition: map-get($transitions, "fast");
+        &:hover{
+            background: map-get($colors, "bg3");
+        }
     }
     &__dropdown{
         display: none;
@@ -258,15 +266,15 @@ export default {
 }
 
 .question{
+    @include card();
+    @include cardHover();
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 24px;
     padding: 24px;
 	background: map-get($colors, "bg1");
-	border-radius: 24px;
     &__name{}
     &__answer{
         text-align: left;
@@ -279,9 +287,9 @@ export default {
 }
 
 .help{
+    @include card();
     width: 60%;
     margin: 0 auto;
-    border-radius: 24px;
     padding: 24px;
 	background: map-get($colors, "bg3");
     transition: map-get($transitions, "medium");

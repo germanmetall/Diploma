@@ -52,6 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../styles/global.scss";
 .FAQ{
 	display: flex;
 	flex-direction: column;

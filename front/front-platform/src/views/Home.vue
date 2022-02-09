@@ -47,14 +47,13 @@ export default {
 	margin: 0 auto;
 }
 .course{
+	@include card();
+	@include cardHover();
 	display: grid;
 	grid-template-columns: auto clamp(120px, 30%, 300px);
 	justify-content: space-between;
     align-items: center;
 	padding: 24px;
-	margin: 24px;
-	background: map-get($colors, "bg1");
-	border-radius: 24px;
 	cursor: pointer;
 	&__name{
 	}

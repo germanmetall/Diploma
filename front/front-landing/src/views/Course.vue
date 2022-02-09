@@ -10,13 +10,7 @@
 					<span class="course__price">{{course.attributes.Price}}</span>
 					<!-- Оплата -->
 					<div class="course__pay">
-
-						<lp-provider lp-data="eyAidmVyc2lvbiIgOiAzLCAicHVibGljX2tleSIgOiAieW91cl9wdWJsaWNfa2V5IiwgImFjdGlv
-biIgOiAicGF5IiwgImFtb3VudCIgOiAxLCAiY3VycmVuY3kiIDogIlVTRCIsICJkZXNjcmlwdGlv
-biIgOiAiZGVzY3JpcHRpb24gdGV4dCIsICJvcmRlcl9pZCIgOiAib3JkZXJfaWRfMSIgfQ==" lp-signature="QvJD5u9Fg55PCx/Hdz6lzWtYwcI=" :onpaymentsuccess="ok($event)"  :onpaymenterror="error($event)">
-							<lp-privat24-pay mode="black"></lp-privat24-pay>
-						</lp-provider>
-					
+						Оплатить
 					</div>
 				</section>
 			</article>
@@ -72,9 +66,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../../styles/global.scss";
 .course{
 	width: 100%;
-	background: map-get($colors, "bg1");
+	background: map-get($colors, "bg2");
 	@include card();
 	&__info{
 		background: map-get($colors, "bg1");
@@ -104,6 +99,7 @@ export default {
 		content: " грн";
 	}
 	&__pay{
+		width: 40%;
 	}
 }
 </style>
