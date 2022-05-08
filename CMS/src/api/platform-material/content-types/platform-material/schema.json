@@ -4,7 +4,8 @@
   "info": {
     "singularName": "platform-material",
     "pluralName": "platform-materials",
-    "displayName": "Platform Material"
+    "displayName": "Platform Material",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -18,11 +19,15 @@
       "type": "richtext"
     },
     "Included_files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "files"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "level": {
+      "type": "integer"
     }
   }
 }

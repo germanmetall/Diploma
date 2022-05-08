@@ -423,6 +423,9 @@
                                               }
                                             }
                                           },
+                                          "level": {
+                                            "type": "integer"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -762,6 +765,9 @@
                                             "Date": {
                                               "type": "string",
                                               "format": "date-time"
+                                            },
+                                            "level": {
+                                              "type": "integer"
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -1204,6 +1210,9 @@
                                                   }
                                                 }
                                               }
+                                            },
+                                            "level": {
+                                              "type": "integer"
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -2484,6 +2493,9 @@
                                             }
                                           }
                                         },
+                                        "level": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -2823,6 +2835,9 @@
                                           "Date": {
                                             "type": "string",
                                             "format": "date-time"
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -3265,6 +3280,9 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -4577,6 +4595,9 @@
                                             }
                                           }
                                         },
+                                        "level": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -4916,6 +4937,9 @@
                                           "Date": {
                                             "type": "string",
                                             "format": "date-time"
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -5358,6 +5382,9 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -6547,6 +6574,9 @@
                                             }
                                           }
                                         },
+                                        "level": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -6886,6 +6916,9 @@
                                           "Date": {
                                             "type": "string",
                                             "format": "date-time"
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -7328,6 +7361,9 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",

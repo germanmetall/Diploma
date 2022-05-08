@@ -398,6 +398,9 @@
                                   }
                                 }
                               },
+                              "level": {
+                                "type": "integer"
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -1352,6 +1355,9 @@
                                 }
                               }
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -1836,6 +1842,9 @@
                           "example": "string or id"
                         }
                       },
+                      "level": {
+                        "type": "integer"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -2270,6 +2279,9 @@
                                   }
                                 }
                               }
+                            },
+                            "level": {
+                              "type": "integer"
                             },
                             "createdAt": {
                               "type": "string",
@@ -3134,6 +3146,9 @@
                                 }
                               }
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -3628,6 +3643,9 @@
                           ],
                           "example": "string or id"
                         }
+                      },
+                      "level": {
+                        "type": "integer"
                       },
                       "createdAt": {
                         "type": "string",

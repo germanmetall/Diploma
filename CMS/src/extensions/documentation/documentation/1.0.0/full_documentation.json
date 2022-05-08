@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2022-02-18T10:14:40.526Z"
+    "x-generation-date": "2022-05-08T12:11:35.009Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8986,6 +8986,9 @@
                                               }
                                             }
                                           },
+                                          "level": {
+                                            "type": "integer"
+                                          },
                                           "createdAt": {
                                             "type": "string",
                                             "format": "date-time"
@@ -9325,6 +9328,9 @@
                                             "Date": {
                                               "type": "string",
                                               "format": "date-time"
+                                            },
+                                            "level": {
+                                              "type": "integer"
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -9767,6 +9773,9 @@
                                                   }
                                                 }
                                               }
+                                            },
+                                            "level": {
+                                              "type": "integer"
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -11047,6 +11056,9 @@
                                             }
                                           }
                                         },
+                                        "level": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -11386,6 +11398,9 @@
                                           "Date": {
                                             "type": "string",
                                             "format": "date-time"
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -11828,6 +11843,9 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -13140,6 +13158,9 @@
                                             }
                                           }
                                         },
+                                        "level": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -13479,6 +13500,9 @@
                                           "Date": {
                                             "type": "string",
                                             "format": "date-time"
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -13921,6 +13945,9 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -15110,6 +15137,9 @@
                                             }
                                           }
                                         },
+                                        "level": {
+                                          "type": "integer"
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -15449,6 +15479,9 @@
                                           "Date": {
                                             "type": "string",
                                             "format": "date-time"
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -15891,6 +15924,9 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "level": {
+                                            "type": "integer"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -16994,6 +17030,9 @@
                                 "type": "string",
                                 "format": "date-time"
                               },
+                              "level": {
+                                "type": "integer"
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -17576,6 +17615,9 @@
                               "type": "string",
                               "format": "date-time"
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -18047,6 +18089,9 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "level": {
+                        "type": "integer"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -18109,6 +18154,9 @@
                             "Date": {
                               "type": "string",
                               "format": "date-time"
+                            },
+                            "level": {
+                              "type": "integer"
                             },
                             "createdAt": {
                               "type": "string",
@@ -18601,6 +18649,9 @@
                               "type": "string",
                               "format": "date-time"
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -19082,6 +19133,9 @@
                       "Date": {
                         "type": "string",
                         "format": "date-time"
+                      },
+                      "level": {
+                        "type": "integer"
                       },
                       "createdAt": {
                         "type": "string",
@@ -19695,6 +19749,9 @@
                                   }
                                 }
                               },
+                              "level": {
+                                "type": "integer"
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -20649,6 +20706,9 @@
                                 }
                               }
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -21133,6 +21193,9 @@
                           "example": "string or id"
                         }
                       },
+                      "level": {
+                        "type": "integer"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -21567,6 +21630,9 @@
                                   }
                                 }
                               }
+                            },
+                            "level": {
+                              "type": "integer"
                             },
                             "createdAt": {
                               "type": "string",
@@ -22431,6 +22497,9 @@
                                 }
                               }
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -22925,6 +22994,9 @@
                           ],
                           "example": "string or id"
                         }
+                      },
+                      "level": {
+                        "type": "integer"
                       },
                       "createdAt": {
                         "type": "string",
@@ -28444,6 +28516,9 @@
                                   }
                                 }
                               },
+                              "level": {
+                                "type": "integer"
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -29402,6 +29477,9 @@
                                 }
                               }
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -30284,6 +30362,9 @@
                                 }
                               }
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -31151,6 +31232,9 @@
                                 }
                               }
                             },
+                            "level": {
+                              "type": "integer"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -31654,6 +31738,9 @@
                           ],
                           "example": "string or id"
                         }
+                      },
+                      "level": {
+                        "type": "integer"
                       },
                       "createdAt": {
                         "type": "string",
