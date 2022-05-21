@@ -32,6 +32,11 @@ class Courses {
         return await fetch(`${this.localPath}?populate=%2A`);
     }
 
+    // TODO implement norm
+    async getMine(){
+        return await fetch(`${this.localPath}?populate=%2A`);
+    }
+
     async getById(id){
         let populateQuery = `populate[0]=teacher.avatar&populate[1]=platform_events&populate[2]=students.avatar&populate[3]=platform_materials.Included_files&populate[4]=platform_tasks.platform_tasks`;
         return await fetch(`${this.localPath}/${id}?${populateQuery}`);
