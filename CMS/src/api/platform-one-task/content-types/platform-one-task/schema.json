@@ -12,8 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Text": {
+    "Question": {
       "type": "richtext"
+    },
+    "rightAnswer": {
+      "type": "string",
+      "required": false,
+      "private": true
     }
   }
 }

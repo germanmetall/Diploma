@@ -3,11 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-      "CMS": "cd CMS && npm run develop",
-      "serve-landing": "cd front/front-landing && npm run serve",
-      "serve-platform": "cd front/front-platform && npm run serve"
+        "CMS": "cd CMS && npm run develop",
+        "serve-landing": "cd front/front-landing && npm run serve",
+        "serve-platform": "cd front/front-platform && npm run serve"
     },
-    "dependencies": {},
-    "devDependencies": {}
-  }
-  
+    "dependencies": {
+        "axios": "^0.27.2",
+        "express": "^4.18.1",
+        "jsonwebtoken": "^8.5.1"
+    }
+}

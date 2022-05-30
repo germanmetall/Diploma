@@ -19,7 +19,10 @@
                           "attributes": {
                             "type": "object",
                             "properties": {
-                              "Text": {
+                              "Question": {
+                                "type": "string"
+                              },
+                              "rightAnswer": {
                                 "type": "string"
                               },
                               "createdAt": {
@@ -597,7 +600,10 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "Text": {
+                            "Question": {
+                              "type": "string"
+                            },
+                            "rightAnswer": {
                               "type": "string"
                             },
                             "createdAt": {
@@ -1064,7 +1070,10 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "Text": {
+                      "Question": {
+                        "type": "string"
+                      },
+                      "rightAnswer": {
                         "type": "string"
                       },
                       "createdAt": {
@@ -1123,7 +1132,10 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "Text": {
+                            "Question": {
+                              "type": "string"
+                            },
+                            "rightAnswer": {
                               "type": "string"
                             },
                             "createdAt": {
@@ -1610,7 +1622,10 @@
                         "attributes": {
                           "type": "object",
                           "properties": {
-                            "Text": {
+                            "Question": {
+                              "type": "string"
+                            },
+                            "rightAnswer": {
                               "type": "string"
                             },
                             "createdAt": {
@@ -2088,7 +2103,10 @@
                   "data": {
                     "type": "object",
                     "properties": {
-                      "Text": {
+                      "Question": {
+                        "type": "string"
+                      },
+                      "rightAnswer": {
                         "type": "string"
                       },
                       "createdAt": {

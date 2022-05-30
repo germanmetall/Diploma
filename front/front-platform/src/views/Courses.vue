@@ -7,7 +7,7 @@
                 <article class="course" v-for="course of courses" :key="course" @click="$router.push({ name: 'Course', params: { id: course.id }})">
                     <span class="course__name heading heading--medium">{{course.attributes.Name}}</span>
                     <span class="course__info">{{course.attributes.Schedule}}</span>
-                    <img :src="course.attributes.Avatar.data.attributes.name" class="course__img"/>
+                    <img :src="'http://localhost:1337'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
                 </article>
             </section>
 
@@ -28,10 +28,8 @@ export default {
 		};
 	},
 	mounted: async function() {
-		let resp = await this.$options.API.data().Courses.getMine();
-		let body = await resp.json();
-		this.courses = body.data;
-		console.log(body);
+		this.courses = await this.$options.API.data().Courses.getMine();
+		console.log(this.courses);
 	}
 }
 </script>

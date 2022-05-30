@@ -64,6 +64,9 @@ const router = createRouter({
 
 const DEFAULT_TITLE = 'Курсы';
 router.beforeEach((to, from, next) => {
+  if ((localStorage.getItem("jwt")==undefined || localStorage.getItem("jwt")=="") && to.name !== 'Auth') {
+    next({ name: 'Auth' })
+  }
   document.title = to.meta.title || DEFAULT_TITLE;
   next();
 })

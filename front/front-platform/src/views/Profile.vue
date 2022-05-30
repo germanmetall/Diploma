@@ -17,7 +17,7 @@
 					<!--
 					<img class="img__top" src="https://www.svgrepo.com/show/1001/graduation-cap.svg"/>
 					-->
-					<img class="img__avatar" :src="profile.img"/>
+					<img class="img__avatar" :src="profile.img || 'https://pbs.twimg.com/media/FSEQED7X0AQQMKd?format=jpg&name=900x900'"/>
 				</div>
                 <span class="profile__contacts">{{profile.contacts}}</span>
             </section>
@@ -25,7 +25,7 @@
 			<section v-if="edit" class="profile edit">
                 <input type="text" class="profile__name" :value="profile.name">
                 <div class="profile__img">
-					<img class="img__avatar" :src="profile.img" @click="changeAvatar()"/>
+					<img class="img__avatar" :src="profile.img || 'https://pbs.twimg.com/media/FSEQED7X0AQQMKd?format=jpg&name=900x900'" @click="changeAvatar()"/>
 					<input type="file" accept="image/*" id="avatarInput"/>
 				</div>
                 <textarea class="profile__contacts" :value="profile.contacts"></textarea>
@@ -45,23 +45,26 @@ export default {
 	data: function() {
 		return {
 			edit: false,
-			profile: {
-				name: "Test name",
-				img: "https://pbs.twimg.com/media/FSEQED7X0AQQMKd?format=jpg&name=900x900",
-				contacts: "Test contacts contacts contacts contacts contacts contacts contacts contacts contacts contacts contacts"
-			}
+			profile: {}
 		};
 	},
 	mounted: async function() {
-		//let resp = await this.$options.API.data().Me.get();
-		//let body = await resp.json();
+		let resp = await this.$options.API.data().Auth.me();
+		let body = await resp.json();
+		console.log(body);
+		this.profile = {
+			name: body.username,
+			contacts: body.Contacts
+		}
 	},
 	methods:{
 		toggleEdit(){
 			this.edit = !this.edit;
 		},
-		save(){
-
+		async save(){
+			// TODO
+			let resp = await this.$options.API.data().Auth.me();
+			let body = await resp.json();
 		},
 		changeAvatar(){
 			document.querySelector("#avatarInput").click();
@@ -78,12 +81,14 @@ export default {
 	align-items: flex-end;
 }
 .profile{
+	width: 100%;
 	display: grid;
 	grid-template-columns: calc(30% - 6px) calc(70% - 6px);
 	gap: 12px;
 	background: transparentize(map-get($colors, "bg1"), 0.5);
 	border-radius: 56px;
 	padding: 12px;
+	margin: 0 auto;
 	&__name{
 		margin: auto;
 		font-size: 3rem;

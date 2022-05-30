@@ -28,6 +28,12 @@
     },
     "level": {
       "type": "integer"
+    },
+    "platform_courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::platform-course.platform-course",
+      "mappedBy": "platform_materials"
     }
   }
 }

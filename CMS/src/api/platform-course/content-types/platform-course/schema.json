@@ -24,34 +24,38 @@
     "teacher": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::platform-user.platform-user"
+      "target": "admin::user"
     },
     "students": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::platform-user.platform-user"
+      "target": "plugin::users-permissions.user"
     },
     "platform_events": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::platform-event.platform-event"
+      "relation": "manyToMany",
+      "target": "api::platform-event.platform-event",
+      "inversedBy": "platform_courses"
     },
     "platform_materials": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::platform-material.platform-material"
+      "relation": "manyToMany",
+      "target": "api::platform-material.platform-material",
+      "inversedBy": "platform_courses"
     },
     "platform_tasks": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::platform-task.platform-task"
+      "relation": "manyToMany",
+      "target": "api::platform-task.platform-task",
+      "inversedBy": "platform_courses"
     },
     "Avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

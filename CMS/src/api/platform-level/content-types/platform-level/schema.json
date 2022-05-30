@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platform_levels",
+  "info": {
+    "singularName": "platform-level",
+    "pluralName": "platform-levels",
+    "displayName": "Platform level",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "level": {
+      "type": "integer"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "platform_levels"
+    },
+    "platform_course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::platform-course.platform-course"
+    }
+  }
+}

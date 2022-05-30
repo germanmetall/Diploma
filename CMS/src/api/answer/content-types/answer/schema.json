@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "answers",
+  "info": {
+    "singularName": "answer",
+    "pluralName": "answers",
+    "displayName": "Platform Answers-to-task",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "platform_answer_to_one_tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::platform-answer-to-one-task.platform-answer-to-one-task"
+    },
+    "mark": {
+      "type": "integer"
+    },
+    "platform_task": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::platform-task.platform-task"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "platform_answers_to_tasks"
+    }
+  }
+}

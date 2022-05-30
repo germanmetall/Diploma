@@ -47,8 +47,8 @@
 				<div class="course__tab">
 
 					<article class="student" v-for="student of course.attributes.students.data" :key="student">
-						<img class="student__avatar" :src="`http://localhost:1337${student.attributes.avatar.data[0].attributes.url}`"/>
-                        <span class="student__name heading heading--small">{{student.attributes.Name}}</span>
+						<img class="student__avatar" v-if="student.attributes.avatar.data" :src="'http://localhost:1337'+student.attributes.avatar.data[0].attributes.url"/>
+                        <span class="student__name heading heading--small">{{student.attributes.username}}</span>
                     </article>
 
 				</div>
@@ -106,14 +106,6 @@ export default {
 		let body = await resp.json();
 		this.course = body.data;
 		console.log(this.course);
-		const reader = new FileReader();
-		reader.onload = (e) => {
-			// convert image file to base64 string
-			this.teacherAvatar = reader.result;
-			document.querySelector(".course__teacherAvatar").src = this.teacherAvatar;
-		};
-		let file = await fetch(`http://localhost:1337${this.course.attributes.teacher.data.attributes.avatar.data[0].attributes.url}`);
-		reader.readAsDataURL(await file.blob());
 	}
 }
 </script>

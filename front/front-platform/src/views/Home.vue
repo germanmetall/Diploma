@@ -4,10 +4,11 @@
 		<main class="main">
 
             <section class="courses">
-                <article class="course" v-for="course of courses" :key="course" @click="$router.push({ name: 'Course', params: { id: course.id }})">
+                <article class="course" v-for="course of courses" :key="course" >
+					<!-- @click="$router.push({ name: 'Course', params: { id: course.id }})" -->
                     <span class="course__name heading heading--medium">{{course.attributes.Name}}</span>
                     <span class="course__info">{{course.attributes.Schedule}}</span>
-                    <img :src="course.attributes.Avatar.data.attributes.name" class="course__img"/>
+                    <img :src="'http://localhost:1337'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
                 </article>
             </section>
 

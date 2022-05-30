@@ -19,6 +19,15 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::platform-one-task.platform-one-task"
+    },
+    "platform_courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::platform-course.platform-course",
+      "mappedBy": "platform_tasks"
+    },
+    "level": {
+      "type": "integer"
     }
   }
 }
