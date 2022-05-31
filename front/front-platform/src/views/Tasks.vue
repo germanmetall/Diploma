@@ -7,12 +7,17 @@
 
             <div class="notations">
                 <div class="notation__container" v-for="notation of notations" :key="notation">
-                    <span class="notation__type">
-                        {{notation.name}}
-                    </span>
-                    <div class="notation__dropdown" v-for="element of notation.elements" :key="element">
-                        <div @click="insertNotation(element)" class="notation">{{element}}</div>
-                    </div>
+                    <template v-if="notation.name !== 'Справка'">
+                        <span class="notation__type">
+                            {{notation.name}}
+                        </span>
+                        <div class="notation__dropdown" v-for="element of notation.elements" :key="element">
+                            <div @click="insertNotation(element)" class="notation">{{element}}</div>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <router-link id="hint" target="_blank" to="/hint">Справка</router-link>
+                    </template>
                 </div>
             </div>
 
@@ -26,32 +31,6 @@
                 <div class="help__next heading heading--small" v-if="index < questions.length - 1" @click="next()">Дальше</div>
                 <div class="help__next heading heading--small" v-if="index == questions.length - 1" @click="sendResults()">Отправить</div>
             </div>
-
-            <div class="hint">
-                    <span class="hint__text" v-if="false">
-                        <i>Для дробей используйте точку (3.14159) или косую линию (8/3)</i>
-                    </span>
-                    <span class="hint__text" v-if="match.log">
-                        Формула логарифма: <i>log(число; основание)</i>, например: log(8; 2) - логарифм 8 по основанию 2
-                    </span>
-                    <span class="hint__text" v-if="match.series">
-                        Формулы действий с рядом: 
-                        <br/>
-                        S(выражение; нижняя граница; верхняя граница) для суммы,
-                        <br/>
-                        P(выражение; нижняя граница; верхняя граница) для произведения ряда
-                        <br/>
-                        В качестве бесконечности используйте запись Inf и -Inf для "минус бесконечности"
-                    </span>
-                    <span class="hint__text" v-if="match.trigonometry">
-                        Формулы тригонометрии:
-                        <br/> 
-                        sin(угол) <i>для радиан</i>, например sin(45)
-                        <br/> 
-                        sin(угол deg) <i>для градусов</i>, например sin(45 deg)
-                    </span>
-                </div>
-
         </div>
     </div>
 </template>
@@ -84,6 +63,9 @@ export default {
                 {
                     name: "Прочее",
                     elements: ["S(x,4,8)", "P(y,4,8)", "log(1,2)"]
+                },
+                {
+                    name: "Справка"
                 }
             ],
             match: {
@@ -211,6 +193,17 @@ export default {
     }
 }
 
+#hint{
+    @include card();
+    color: #000;
+    transition: map-get($transitions, "fast");
+    padding: 12px;
+    margin: auto;
+    &:hover{
+        background: map-get($colors, "bg3");
+    }
+}
+
 .question{
     @include card();
     @include cardHover();
@@ -261,14 +254,6 @@ export default {
         padding: 12px;     
         border-radius: 24px;
         transition: map-get($transitions, "medium");
-    }
-}
-
-.hint{
-    padding: 24px;
-    &__text{
-        display: inline-block;
-        margin: .5rem 0;
     }
 }
 </style>

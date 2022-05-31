@@ -5,6 +5,7 @@ import Course from '../views/Course.vue'
 import Courses from '../views/Courses.vue'
 import Profile from '../views/Profile.vue'
 import Tasks from '../views/Tasks.vue'
+import Hint from '../views/Hint.vue'
 
 const routes = [
   {
@@ -53,6 +54,14 @@ const routes = [
     component: Tasks,
     meta: {
       title: "Задание"
+    }
+  },
+  {
+    path: '/hint',
+    name: 'Hint',
+    component: Hint,
+    meta: {
+      title: "Справка"
     }
   }
 ]
