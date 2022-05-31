@@ -53,7 +53,7 @@
 
 				</div>
 
-                <img class="course__teacherAvatar"/>
+                <img :src="teacherAvatar" class="course__teacherAvatar"/>
 			</section>
 		</main>
 	</div>
@@ -106,6 +106,10 @@ export default {
 		let body = await resp.json();
 		this.course = body.data;
 		console.log(this.course);
+		resp = await this.$options.API.data().Courses.getAvatar(this.id);
+		body = await resp.json();
+		console.log(body);
+		this.teacherAvatar = 'http://localhost:1337'+body.data.attributes.Avatar.data.attributes.url;
 	}
 }
 </script>

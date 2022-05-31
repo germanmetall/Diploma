@@ -55,7 +55,6 @@ export default {
 	justify-content: space-between;
     align-items: center;
 	padding: 24px;
-	cursor: pointer;
 	&__name{
 	}
 	&__info{

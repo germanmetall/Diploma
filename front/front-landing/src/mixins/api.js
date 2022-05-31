@@ -46,7 +46,7 @@ class FAQ {
 
 class Contacts {
     constructor(path){
-        this.localPath = `${path}/contacts`;
+        this.localPath = `${path}/contacts?populate=%2A`;
     }
 
     async get(){

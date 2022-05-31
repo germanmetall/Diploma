@@ -4,7 +4,7 @@
 
 		<main class="main" v-if="courses">
 			<article class="course" v-for="course of courses" :key="course">
-				<img class="course__teacher" src="https://media-exp1.licdn.com/dms/image/C5603AQEhf8fpKRLYYQ/profile-displayphoto-shrink_800_800/0/1642147918037?e=1648684800&v=beta&t=ugsyrk07mzYFiSYTSNjSlYUjJLhWurgNhFLVi5p7R10"/>
+				<img class="course__teacher" src="https://pbs.twimg.com/media/FSEQED7X0AQQMKd?format=jpg&name=900x900"/>
 				<span class="heading heading--medium">{{course.attributes.Heading}}</span>
 				<section class="course__info">
 					<span class="course__text" v-html="course.attributes.Description_short"></span>
@@ -35,6 +35,7 @@ export default {
 	mounted: async function(){
 		let resp = await this.$options.API.data().Courses.get();
 		let body = await resp.json();
+		console.log(body);
 		this.courses = body.data;
 		this.courses.map(el => {
 			el.attributes['Description_short'] = md.render(el.attributes['Description_short']);
@@ -73,6 +74,8 @@ export default {
 		height: 96px;
 		background: chocolate;
 		border-radius: 100%;
+		object-fit: cover;
+		aspect-ratio: 1/1;
 	}
 	&__text{
 		font-size: 1.25rem;

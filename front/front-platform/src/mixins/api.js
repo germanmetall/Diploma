@@ -85,6 +85,11 @@ class Courses {
         return await fetch(`${this.localPath}/${id}?${populateFilterQuery}`);
     }
 
+    async getAvatar(id){
+        let populateFilterQuery = `populate[0]=Avatar`;
+        return await fetch(`${this.localPath}/${id}?${populateFilterQuery}`);
+    }
+
     // TODO ?
     async register(email, id){
         let token = localStorage.getItem("jwt");

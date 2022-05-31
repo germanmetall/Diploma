@@ -83,11 +83,14 @@ export default {
 .hint{
     text-align: start;
     font-size: 24px;
+    background: transparentize(map-get($colors, "bg1"), .3);
+    border-radius: 48px;
+    padding: 12px 48px;
     &__text{
         display: block;
         margin: 6px 0;
         &::first-letter{
-            margin-left: -48px;
+            margin-left: 48px;
         }
     }
 }
