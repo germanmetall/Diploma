@@ -49,7 +49,7 @@ export default {
 		};
 	},
 	mounted: async function() {
-		let resp = await this.$options.API.data().Auth.me();
+		let resp = await this.$options.API.data().Profile.me();
 		let body = await resp.json();
 		console.log(body);
 		this.profile = {
@@ -62,9 +62,16 @@ export default {
 			this.edit = !this.edit;
 		},
 		async save(){
-			// TODO
-			let resp = await this.$options.API.data().Auth.me();
+			let username = document.querySelector(".profile__name").value,
+				contacts = document.querySelector(".profile__contacts").value;
+			let resp = await this.$options.API.data().Profile.update(username, contacts);
 			let body = await resp.json();
+			console.log(body);
+			this.profile = {
+				name: username,
+				contacts: contacts
+			};
+			this.edit = !this.edit;
 		},
 		changeAvatar(){
 			document.querySelector("#avatarInput").click();
@@ -84,7 +91,8 @@ export default {
 	width: 100%;
 	display: grid;
 	grid-template-columns: calc(30% - 6px) calc(70% - 6px);
-	gap: 12px;
+	column-gap: 12px;
+	row-gap: 4px;
 	background: transparentize(map-get($colors, "bg1"), 0.5);
 	border-radius: 56px;
 	padding: 12px;
@@ -92,6 +100,9 @@ export default {
 	&__name{
 		margin: auto;
 		font-size: 3rem;
+		border: none;
+		box-sizing: border-box;
+		height: 100%;
 	}
 	&__img{
 		position: relative;
@@ -113,20 +124,29 @@ export default {
 			}
 			&__avatar{
 				width: 100%;
+				height: 100%;
 				aspect-ratio: 1;
 				object-fit: cover;
 				border-radius: 56px 0 0 56px;
+				box-sizing: border-box;
 			}
 		}
 	}
 	&__contacts{
 		text-align: start;
 		font-size: 1.75rem;
+		border: none;
+		box-sizing: border-box;
 	}
 }
 
  .edit .profile{
+	&__name{
+		width: 100%;
+		border-radius: 0 56px 0 0;
+	}
 	&__contacts{
+		width: 100%;
 		border-radius: 0 0 56px 0;
 	}
 }

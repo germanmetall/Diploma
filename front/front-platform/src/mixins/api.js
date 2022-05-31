@@ -15,13 +15,36 @@ class Auth {
             }
         });
     }
+}
+class Profile{
+    constructor(path){
+        this.localPath = `${path}/users`;
+    }
 
     async me(){
         let token = localStorage.getItem("jwt");
-        return await fetch(`${this.localPath}/users/me?populate[0]=avatar`, {
+        return await fetch(`${this.localPath}/me?populate[0]=avatar`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
+            }
+        });
+    }
+
+    async update(username, contacts){
+        let resp = await this.me();
+        let body = await resp.json();
+        let id = body.id;
+        let token = localStorage.getItem("jwt");
+        return await fetch(`${this.localPath}/${id}`, {
+            method: "PUT",
+            body: JSON.stringify({
+                username: username,
+                Contacts: contacts
+            }),
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "content-type": "application/json"
             }
         });
     }
@@ -46,7 +69,7 @@ class Courses {
         let body = await all.json();
         console.log(body);
         let courses = body.data;
-        let me = await (new Auth(this.path).me());
+        let me = await (new Profile(this.path).me());
         body = await me.json();
         console.log(body, courses);
         courses = courses.filter(el => {
@@ -128,7 +151,7 @@ class Tasks {
                 users: body.id
             }
         }));
-        let me = await (new Auth(this.localPath).me());
+        let me = await (new Profile(this.localPath).me());
         body = await me.json();
         console.log(body);
         resp = await fetch(`${this.localPath}/answers`, {
@@ -154,7 +177,8 @@ const API = {
         return {
             Auth: new Auth(path),
             Courses: new Courses(path),
-            Tasks: new Tasks(path)
+            Tasks: new Tasks(path),
+            Profile: new Profile(path)
         }
     }
 }
