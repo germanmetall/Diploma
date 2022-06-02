@@ -13,7 +13,7 @@ const routes = [
     name: 'Auth',
     component: Auth,
     meta: {
-      title: "Вход"
+      title: "Вхід"
     }
   },
   {
@@ -21,7 +21,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: "Главная"
+      title: "Головна"
     }
   },
   {
@@ -29,7 +29,7 @@ const routes = [
     name: 'Courses',
     component: Courses,
     meta: {
-      title: "Мои курсы"
+      title: "Мої курси"
     }
   },
   {
@@ -45,7 +45,7 @@ const routes = [
     name: 'Profile',
     component: Profile,
     meta: {
-      title: "Профиль"
+      title: "Профіль"
     }
   },
   {
@@ -53,7 +53,7 @@ const routes = [
     name: 'Tasks',
     component: Tasks,
     meta: {
-      title: "Задание"
+      title: "Завдання"
     }
   },
   {
@@ -61,7 +61,7 @@ const routes = [
     name: 'Hint',
     component: Hint,
     meta: {
-      title: "Справка"
+      title: "Довідка"
     }
   }
 ]
@@ -71,7 +71,7 @@ const router = createRouter({
   routes
 })
 
-const DEFAULT_TITLE = 'Курсы';
+const DEFAULT_TITLE = 'Курси';
 router.beforeEach((to, from, next) => {
   if ((localStorage.getItem("jwt")==undefined || localStorage.getItem("jwt")=="") && to.name !== 'Auth') {
     next({ name: 'Auth' })

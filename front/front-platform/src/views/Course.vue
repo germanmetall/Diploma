@@ -5,10 +5,10 @@
 			<section class="course" v-if="course">
 				
                 <nav class="courseNav">
-                    <span class="courseNav__item heading heading--medium active" @click="switchTab(0)">Главная</span>
-                    <span class="courseNav__item heading heading--medium" @click="switchTab(1)">Материалы</span>
-                    <span class="courseNav__item heading heading--medium" @click="switchTab(2)">Задания</span>
-                    <span class="courseNav__item heading heading--medium" @click="switchTab(3)">Ученики</span>
+                    <span class="courseNav__item heading heading--medium active" @click="switchTab(0)">Головна</span>
+                    <span class="courseNav__item heading heading--medium" @click="switchTab(1)">Матеріали</span>
+                    <span class="courseNav__item heading heading--medium" @click="switchTab(2)">Завдання</span>
+                    <span class="courseNav__item heading heading--medium" @click="switchTab(3)">Студенти</span>
                 </nav>
 
                 <span class="course__description">

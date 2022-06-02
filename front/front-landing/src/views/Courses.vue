@@ -9,7 +9,7 @@
 				<section class="course__info">
 					<span class="course__text" v-html="course.attributes.Description_short"></span>
 					<span class="course__price">{{course.attributes.Price}}</span>
-					<router-link :to="{ name: 'Course', params: { id: course.id }}" class="course__more">Больше</router-link>
+					<router-link :to="{ name: 'Course', params: { id: course.id }}" class="course__more">Більше</router-link>
 				</section>
 			</article>
 		</main>

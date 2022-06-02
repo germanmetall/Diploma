@@ -1,10 +1,10 @@
 <template>
 	<header class="header">
 		<nav class="nav">
-            <router-link class="nav__item heading heading--big" to="/">Главная</router-link>
-            <router-link class="nav__item heading heading--big" to="/courses">Курсы</router-link>
-            <router-link class="nav__item heading heading--big" to="/faq">Вопросы</router-link>
-            <router-link class="nav__item heading heading--big" to="/contacts">Контакты</router-link>
+            <router-link class="nav__item heading heading--big" to="/">Головна</router-link>
+            <router-link class="nav__item heading heading--big" to="/courses">Курси</router-link>
+            <router-link class="nav__item heading heading--big" to="/faq">Питання</router-link>
+            <router-link class="nav__item heading heading--big" to="/contacts">Контакти</router-link>
         </nav>
 	</header>
 </template>

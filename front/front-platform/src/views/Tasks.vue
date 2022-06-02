@@ -7,7 +7,7 @@
 
             <div class="notations">
                 <div class="notation__container" v-for="notation of notations" :key="notation">
-                    <template v-if="notation.name !== 'Справка'">
+                    <template v-if="notation.name !== 'Довідка'">
                         <span class="notation__type">
                             {{notation.name}}
                         </span>
@@ -16,7 +16,7 @@
                         </div>
                     </template>
                     <template v-else>
-                        <router-link id="hint" target="_blank" to="/hint">Справка</router-link>
+                        <router-link id="hint" target="_blank" to="/hint">Довідка</router-link>
                     </template>
                 </div>
             </div>
@@ -28,8 +28,8 @@
 
             <div class="help" :class="{'valid': !match.error, 'notValid': match.error}" v-if="questions">
                 <div class="help__formula">{{match.text}}</div>
-                <div class="help__next heading heading--small" v-if="index < questions.length - 1" @click="next()">Дальше</div>
-                <div class="help__next heading heading--small" v-if="index == questions.length - 1" @click="sendResults()">Отправить</div>
+                <div class="help__next heading heading--small" v-if="index < questions.length - 1" @click="next()">Далі</div>
+                <div class="help__next heading heading--small" v-if="index == questions.length - 1" @click="sendResults()">Надіслати</div>
             </div>
         </div>
     </div>
@@ -49,28 +49,28 @@ export default {
             id: this.$route.params.id,
 			notations: [
                 {
-                    name: "Переменные",
+                    name: "Змінні",
                     elements: ["x", "y", "z"]
                 },
                 {
-                    name: "Константы",
+                    name: "Константи",
                     elements: ["PI", "E", "PHI"]
                 },
                 {
-                    name: "Тригонометрия",
+                    name: "Тригонометрія",
                     elements: ["sin(45)", "cos(45)", "tan(45)", "cot(45)"]
                 },
                 {
-                    name: "Прочее",
+                    name: "Інше",
                     elements: ["S(x,4,8)", "P(y,4,8)", "log(1,2)"]
                 },
                 {
-                    name: "Справка"
+                    name: "Довідка"
                 }
             ],
             match: {
                 error: true,
-                text: "Пустая строка!"
+                text: "Пуста строка!"
             },
             index: 0,
             questions: undefined,
@@ -88,14 +88,14 @@ export default {
                 this.index++;
                 this.check();
             }
-            else alert("Запись неправильная");
+            else alert("Неправильний запис");
         },
         check(){
             let str = document.querySelector(".question__answer").innerHTML;
             if(str === ""){
                 this.match = {
                     error: true,
-                    text: "Пустая строка!"
+                    text: "Пуста строка!"
                 };
                 return false;
             }
@@ -103,14 +103,14 @@ export default {
                 math.parse(str);
                 this.match = {
                     error: false,
-                    text: "Всё в порядке"
+                    text: "Все в порядку"
                 };
                 return true;
             }
             catch(e){
                 this.match = {
                     error: true,
-                    text: "Неправильная запись!"
+                    text: "Неправильний запис"
                 };
                 return false;
             }
@@ -130,8 +130,14 @@ export default {
                 localStorage.removeItem(`q${this.questions[i].id}`);
             }
             let resp = await this.$options.API.data().Tasks.send(this.id, answersAndIds);
-            let body = await resp.json();
-            console.log(body);
+            console.log(resp);
+            if(resp.data.id){
+                alert("Успішно надіслано!");
+                this.$router.push(`/course/${this.$route.params.courseId}`);
+            }
+            else{
+                alert("Виникла помилка");
+            }
         }
     },
 	mounted: async function() {

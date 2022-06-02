@@ -18,7 +18,7 @@
 				</section>
 
 				<section class="auth__actionContainer">
-					<span class="auth__action" @click="login()">Войти</span>
+					<span class="auth__action" @click="login()">Увійти</span>
 				</section>
 
 			</form>
@@ -40,16 +40,25 @@ export default {
 	methods: {
 		async login(){
 			let isValid = this.checkValidation();
-			this.error = isValid.error;
+			this.error = isValid;
 			
-			if(this.error.error) return;
+			if(this.error.error) {
+				alert(this.error.text);
+				return;
+			}
 
 			let {mail, password} = isValid;
 
 			let resp = await this.$options.API.data().Auth.login(mail, password);
 			let body = await resp.json();
-			console.log(body);
-			localStorage.setItem("jwt", body.jwt);
+			if(body.jwt){
+				alert("Ви успішно увійшли до системи");
+				localStorage.setItem("jwt", body.jwt);
+				this.$router.push("/");
+			}
+			else{
+				alert("Помилка. Перевірте правильність логіна чи паролю");
+			}
 		},
 
 		checkValidation(){
@@ -60,10 +69,10 @@ export default {
 					password = document.querySelector("#password").value;
 
 			if(!mail.match(mailRegex)) 
-				return {error: true, text: "Ваша почта не подходит!"};
+				return {error: true, text: "Ваша пошта не підходить!"};
 			
 			if(!password.match(passwordRegex)) 
-				return {error: true, text: "Ваш пароль не подходит!"};
+				return {error: true, text: "Ваш пароль не підходить!"};
 
 			return {error: false, text: "", mail: mail, password: password};
 		}

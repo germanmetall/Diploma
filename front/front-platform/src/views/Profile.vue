@@ -4,11 +4,11 @@
 		<main class="main">
 
 			<div class="command">
-				<div v-if="!edit" class="command__edit" @click="toggleEdit()">Edit</div>
+				<div v-if="!edit" class="command__edit" @click="toggleEdit()">Змінити</div>
 			</div>
 			<div class="command" v-if="edit">
-				<div class="command__cancel" @click="toggleEdit()">Cancel</div>
-				<div class="command__save" @click="save()">Save</div>
+				<div class="command__cancel" @click="toggleEdit()">Скасувати</div>
+				<div class="command__save" @click="save()">Зберегти</div>
 			</div>
 
             <section v-if="!edit" class="profile">
@@ -17,7 +17,7 @@
 					<!--
 					<img class="img__top" src="https://www.svgrepo.com/show/1001/graduation-cap.svg"/>
 					-->
-					<img class="img__avatar" :src="profile.img || 'https://pbs.twimg.com/media/FSEQED7X0AQQMKd?format=jpg&name=900x900'"/>
+					<img class="img__avatar" src="@/assets/ava.jpg"/>
 				</div>
                 <span class="profile__contacts">{{profile.contacts}}</span>
             </section>
@@ -25,7 +25,7 @@
 			<section v-if="edit" class="profile edit">
                 <input type="text" class="profile__name" :value="profile.name">
                 <div class="profile__img">
-					<img class="img__avatar" :src="profile.img || 'https://pbs.twimg.com/media/FSEQED7X0AQQMKd?format=jpg&name=900x900'" @click="changeAvatar()"/>
+					<img class="img__avatar" src="@/assets/ava.jpg" @click="changeAvatar()"/>
 					<input type="file" accept="image/*" id="avatarInput"/>
 				</div>
                 <textarea class="profile__contacts" :value="profile.contacts"></textarea>

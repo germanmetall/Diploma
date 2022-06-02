@@ -11,7 +11,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'Главная'
+      title: 'Головна'
     }
   },
   {
@@ -19,7 +19,7 @@ const routes = [
     name: 'Courses',
     component: Courses,
     meta: {
-      title: 'Курсы'
+      title: 'Курси'
     }
   },
   {
@@ -27,7 +27,7 @@ const routes = [
     name: 'Course',
     component: Course,
     meta: {
-      title: 'Курсы'
+      title: 'Курси'
     }
   },
   {
@@ -35,7 +35,7 @@ const routes = [
     name: 'FAQ',
     component: FAQ,
     meta: {
-      title: 'Вопросы'
+      title: 'Питання'
     }
   },
   {
@@ -43,7 +43,7 @@ const routes = [
     name: 'Contacts',
     component: Contacts,
     meta: {
-      title: 'Контакты'
+      title: 'Контакти'
     }
   }
 ]
@@ -53,7 +53,7 @@ const router = createRouter({
   routes
 })
 
-const DEFAULT_TITLE = 'Курсы';
+const DEFAULT_TITLE = 'Курси';
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || DEFAULT_TITLE;
   next();

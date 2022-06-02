@@ -174,6 +174,7 @@ class Tasks {
             }
         })
         body = await resp.json();
+        return body;
     }
 }
 const API = {

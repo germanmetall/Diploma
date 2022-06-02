@@ -1,10 +1,10 @@
 <template>
 	<header class="header">
 		<nav class="nav">
-            <router-link class="nav__item heading heading--big" to="/">Главная</router-link>
-            <router-link class="nav__item heading heading--big" to="/courses">Мои курсы</router-link>
+            <router-link class="nav__item heading heading--big" to="/">Головна</router-link>
+            <router-link class="nav__item heading heading--big" to="/courses">Мої курси</router-link>
             <router-link class="nav__item heading heading--big" to="/profile">
-              	<span>Профиль</span>
+              	<span>Профіль</span>
 				<img src="" class="nav__avatar"/>
             </router-link>
         </nav>
