@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/example/public_html/
+    - /bin/cp -R CMS $DEPLOYPATH/CMS
+    - /bin/cp -R front/front-landing/dist $DEPLOYPATH/landing
+    - /bin/cp -R front/front-platform/dist $DEPLOYPATH/platform
