@@ -108,8 +108,7 @@ export default {
 		console.log(this.course);
 		resp = await this.$options.API.data().Courses.getAvatar(this.id);
 		body = await resp.json();
-		console.log(body);
-		this.teacherAvatar = 'http://localhost:1337'+body.data.attributes.Avatar.data.attributes.url;
+		if(body.data.attributes.Avatar.data) this.teacherAvatar = 'http://localhost:1337'+body.data.attributes.Avatar.data.attributes.url;
 	}
 }
 </script>

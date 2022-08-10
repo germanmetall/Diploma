@@ -23,7 +23,17 @@ class Profile{
 
     async me(){
         let token = localStorage.getItem("jwt");
-        return await fetch(`${this.localPath}/me?populate[0]=avatar`, {
+        return await fetch(`${this.localPath}/me?populate[0]=avatar&populate[1]=Platform_levels`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+    }
+
+    async getLevel(userID){
+        let token = localStorage.getItem("jwt");
+        return await fetch(`${this.localPath}/${userID}?populate[0]=Platform_levels`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -72,6 +82,7 @@ class Courses {
         let me = await (new Profile(this.path).me());
         body = await me.json();
         console.log(body, courses);
+
         courses = courses.filter(el => {
             for(let i=0; i<el.attributes.students.data.length; i++){
                 if(el.attributes.students.data[i].attributes.email===body.email) return true;
@@ -81,13 +92,24 @@ class Courses {
     }
 
     async getById(id){
-        let populateFilterQuery = `populate[platform_events][filters][level][$gte]=1&populate[platform_materials][populate]=Included_files&populate[students][populate]=avatar&populate[platform_materials][filters][level][$gte]=1&populate[platform_tasks][populate]=platform_tasks&populate[platform_tasks][filters][level][$gte]=1`;
-        return await fetch(`${this.localPath}/${id}?${populateFilterQuery}`);
+        let token = localStorage.getItem("jwt");
+        let level = 1;
+        let populateFilterQuery = `populate[platform_events][filters][level][$gte]=0&populate[platform_materials][populate]=Included_files&populate[students][populate]=avatar&populate[platform_materials][filters][level][$gte]=0&populate[platform_tasks][populate]=platform_tasks&populate[platform_tasks][filters][level][$gte]=0`;
+        return await fetch(`${this.localPath}/${id}?${populateFilterQuery}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
     }
 
     async getAvatar(id){
+        let token = localStorage.getItem("jwt");
         let populateFilterQuery = `populate[0]=Avatar`;
-        return await fetch(`${this.localPath}/${id}?${populateFilterQuery}`);
+        return await fetch(`${this.localPath}/${id}?${populateFilterQuery}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
     }
 
     // TODO ?
@@ -120,7 +142,12 @@ class Tasks {
     }
 
     async getById(id){
-        return await fetch(`${this.localPath}/platform-tasks/${id}?populate=*`);
+        let token = localStorage.getItem("jwt");
+        return await fetch(`${this.localPath}/platform-tasks/${id}?populate=*`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
     }
 
     async send(task_id, answersAndIds){
@@ -144,7 +171,7 @@ class Tasks {
                 }
             })
             body = await resp.json();
-            console.log(body.data.id);
+            console.log(body.data);
             idArr.push(body.data.id);
         }
 
@@ -174,6 +201,28 @@ class Tasks {
             }
         })
         body = await resp.json();
+
+        // check if right
+        let isRightData = [];
+        for(let i=0; i<answersAndIds.length; i++){
+            isRightData[i] = {
+                taskID: answersAndIds[i].id,
+                answer: answersAndIds[i].answer,
+                answerID: idArr[i]
+            };
+        }
+
+        resp = await fetch("http://localhost:3000/",{
+            method: "POST",
+            headers: {
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify({
+                listAnswers: isRightData
+            })
+        });
+        body = await resp.json();
+        console.log(body);
         return body;
     }
 }

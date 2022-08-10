@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "markdown-it": "^12.3.2",
+    "mathjs": "^10.6.4",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },

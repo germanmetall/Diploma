@@ -15,10 +15,10 @@
     "Question": {
       "type": "richtext"
     },
-    "rightAnswer": {
-      "type": "string",
-      "required": false,
-      "private": true
+    "right_answers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::right-answer.right-answer"
     }
   }
 }

@@ -8,7 +8,7 @@
 					<!-- @click="$router.push({ name: 'Course', params: { id: course.id }})" -->
                     <span class="course__name heading heading--medium">{{course.attributes.Name}}</span>
                     <span class="course__info">{{course.attributes.Schedule}}</span>
-                    <img :src="'http://localhost:1337'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
+                    <img v-if="course.attributes.Avatar.data" :src="'http://localhost:1337'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
                 </article>
             </section>
 

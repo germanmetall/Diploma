@@ -130,7 +130,6 @@ export default {
                 localStorage.removeItem(`q${this.questions[i].id}`);
             }
             let resp = await this.$options.API.data().Tasks.send(this.id, answersAndIds);
-            console.log(resp);
             if(resp.data.id){
                 alert("Успішно надіслано!");
                 this.$router.push(`/course/${this.$route.params.courseId}`);

@@ -4,7 +4,7 @@
 		<main class="main">
 			<article class="course" v-if="course">
 				<span class="heading heading--medium">{{course.attributes.Heading}}</span>
-				<img class="course__teacher" src="https://media-exp1.licdn.com/dms/image/C5603AQEhf8fpKRLYYQ/profile-displayphoto-shrink_800_800/0/1642147918037?e=1648684800&v=beta&t=ugsyrk07mzYFiSYTSNjSlYUjJLhWurgNhFLVi5p7R10"/>
+				<img class="course__teacher" v-if="course.attributes.Icon" :src="'http://localhost:1337'+course.attributes.Icon.data.attributes.url"/>
 				<section class="course__info">
 					<span class="course__text" v-html="course.attributes.Description_long"></span>
 					<span class="course__price">{{course.attributes.Price}}</span>

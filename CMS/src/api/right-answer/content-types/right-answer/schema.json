@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "right_answers",
+  "info": {
+    "singularName": "right-answer",
+    "pluralName": "right-answers",
+    "displayName": "rightAnswer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "answer": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    }
+  }
+}

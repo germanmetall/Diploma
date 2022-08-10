@@ -4,7 +4,7 @@
 
 		<main class="main" v-if="courses">
 			<article class="course" v-for="course of courses" :key="course">
-				<img class="course__teacher" src="https://pbs.twimg.com/media/FSEQED7X0AQQMKd?format=jpg&name=900x900"/>
+				<img class="course__teacher" v-if="course.attributes.Icon" :src="'http://localhost:1337'+course.attributes.Icon.data.attributes.url"/>
 				<span class="heading heading--medium">{{course.attributes.Heading}}</span>
 				<section class="course__info">
 					<span class="course__text" v-html="course.attributes.Description_short"></span>

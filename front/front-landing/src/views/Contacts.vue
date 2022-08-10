@@ -4,7 +4,7 @@
 		<main class="main">
 			<section class="contacts" v-if="contacts">
 				<article class="contact" v-for="contact of contacts" :key="contact" @click="copyOrOpen(contact.attributes.Link || contact.attributes.Text)">
-					<img class="contact__image" :src="'http://localhost:1337'+contact.attributes.Icon.data.attributes.url"/>
+					<img v-if="contact.attributes.Icon.data" class="contact__image" :src="'http://localhost:1337'+contact.attributes.Icon.data.attributes.url"/>
 					<span class="heading heading--medium">{{contact.attributes.Text}}</span>
 				</article>
 			</section>
