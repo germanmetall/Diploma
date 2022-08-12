@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-  		<Header></Header>
+  		<landingHeader></landingHeader>
 		<main class="main">
 			<section class="contacts" v-if="contacts">
 				<article class="contact" v-for="contact of contacts" :key="contact" @click="copyOrOpen(contact.attributes.Link || contact.attributes.Text)">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+import landingHeader from "../components/landingHeader.vue";
 let md = require('markdown-it')({
 	html: true
 });
@@ -21,7 +21,7 @@ let md = require('markdown-it')({
 export default {
   	name: 'Contacts',
 	components: {
-		Header
+		landingHeader
 	},
 	data: function(){
 		return {
@@ -41,7 +41,7 @@ export default {
 		}
 	},
 	mounted: async function(){
-		let resp = await this.$options.API.data().Contacts.get();
+		let resp = await this.$options.landingAPI.data().Contacts.get();
 		let body = await resp.json();
 		this.contacts = body.data;
 		console.log(body);

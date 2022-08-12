@@ -46,6 +46,7 @@ class Profile{
         let body = await resp.json();
         let id = body.id;
         let token = localStorage.getItem("jwt");
+        console.log(token);
         return await fetch(`${this.localPath}/${id}`, {
             method: "PUT",
             body: JSON.stringify({
@@ -54,7 +55,7 @@ class Profile{
             }),
             headers: {
                 Authorization: `Bearer ${token}`,
-                "content-type": "application/json"
+                "Content-type": "application/json"
             }
         });
     }
@@ -226,9 +227,9 @@ class Tasks {
         return body;
     }
 }
-const API = {
+const platformAPI = {
     data() {
-        let path = "http://localhost:1337/api";
+        let path = "https://apcenter.online:1337/api";
         return {
             Auth: new Auth(path),
             Courses: new Courses(path),
@@ -238,4 +239,4 @@ const API = {
     }
 }
 
-export default { API };
+export default { platformAPI };

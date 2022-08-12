@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-  		<Header></Header>
+  		<landingHeader></landingHeader>
 		<main class="main">
 			<article class="course" v-if="course">
 				<span class="heading heading--medium">{{course.attributes.Heading}}</span>
@@ -19,15 +19,15 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+import landingHeader from "../components/landingHeader.vue";
 let md = require('markdown-it')({
 	html: true
 });
 
 export default {
-  	name: 'Course',
+  	name: 'landingCourse',
 	components: {
-		Header
+		landingHeader
 	},
 	data: function() {
 		return {
@@ -45,7 +45,7 @@ export default {
 		}
 	},
 	mounted: async function() {
-		let resp = await this.$options.API.data().Courses.getById(this.id);
+		let resp = await this.$options.landingAPI.data().Courses.getById(this.id);
 		let body = await resp.json();
 		this.course = body.data;
 		this.course.attributes['Description_long'] = md.render(this.course.attributes['Description_long']);

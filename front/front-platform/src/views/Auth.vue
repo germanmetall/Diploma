@@ -49,7 +49,7 @@ export default {
 
 			let {mail, password} = isValid;
 
-			let resp = await this.$options.API.data().Auth.login(mail, password);
+			let resp = await this.$options.platformAPI.data().Auth.login(mail, password);
 			let body = await resp.json();
 			if(body.jwt){
 				alert("Ви успішно увійшли до системи");
@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../../styles/global.scss";
 .auth{
 	&__error{

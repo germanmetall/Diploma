@@ -1,9 +1,9 @@
 <template>
 	<header class="header">
 		<nav class="nav">
-            <router-link class="nav__item heading heading--big" to="/">Головна</router-link>
-            <router-link class="nav__item heading heading--big" to="/courses">Мої курси</router-link>
-            <router-link class="nav__item heading heading--big" to="/profile">
+            <router-link class="nav__item heading heading--big" to="/platform/">Головна</router-link>
+            <router-link class="nav__item heading heading--big" to="/platform/courses">Мої курси</router-link>
+            <router-link class="nav__item heading heading--big" to="/platform/profile">
               	<span>Профіль</span>
 				<img src="" class="nav__avatar"/>
             </router-link>

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  	name: 'Header',
+  	name: 'landingHeader',
     mounted: function(){
         let currTitle = this.$route.meta.title;
         let elems = document.querySelectorAll(".nav__item");

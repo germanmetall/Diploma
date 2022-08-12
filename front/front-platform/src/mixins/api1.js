@@ -54,9 +54,9 @@ class Contacts {
     }
 }
 
-const API = {
+const landingAPI = {
     data() {
-        let path = "http://localhost:1337/api";
+        let path = "https://apcenter.online:1337/api";
         return {
             Text: new MainTexts(path),
             Courses: new Courses(path),
@@ -67,4 +67,4 @@ const API = {
     }
 }
 
-export default { API };
+export default { landingAPI };

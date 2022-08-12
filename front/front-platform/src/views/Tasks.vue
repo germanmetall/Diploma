@@ -16,7 +16,7 @@
                         </div>
                     </template>
                     <template v-else>
-                        <router-link id="hint" target="_blank" to="/hint">Довідка</router-link>
+                        <router-link id="hint" target="_blank" to="/platform/hint">Довідка</router-link>
                     </template>
                 </div>
             </div>
@@ -129,7 +129,7 @@ export default {
                 });
                 localStorage.removeItem(`q${this.questions[i].id}`);
             }
-            let resp = await this.$options.API.data().Tasks.send(this.id, answersAndIds);
+            let resp = await this.$options.platformAPI.data().Tasks.send(this.id, answersAndIds);
             if(resp.data.id){
                 alert("Успішно надіслано!");
                 this.$router.push(`/course/${this.$route.params.courseId}`);
@@ -140,7 +140,7 @@ export default {
         }
     },
 	mounted: async function() {
-		let resp = await this.$options.API.data().Tasks.getById(this.id);
+		let resp = await this.$options.platformAPI.data().Tasks.getById(this.id);
 		let body = await resp.json();
         console.log(body);
         this.name = body.data.attributes.Name;
@@ -149,7 +149,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../../styles/global.scss";
 .notations{
     position: relative;

@@ -102,18 +102,18 @@ export default {
 		}
 	},
 	mounted: async function() {
-		let resp = await this.$options.API.data().Courses.getById(this.id);
+		let resp = await this.$options.platformAPI.data().Courses.getById(this.id);
 		let body = await resp.json();
 		this.course = body.data;
 		console.log(this.course);
-		resp = await this.$options.API.data().Courses.getAvatar(this.id);
+		resp = await this.$options.platformAPI.data().Courses.getAvatar(this.id);
 		body = await resp.json();
 		if(body.data.attributes.Avatar.data) this.teacherAvatar = 'http://localhost:1337'+body.data.attributes.Avatar.data.attributes.url;
 	}
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../../styles/global.scss";
 body{
 	overflow-y: scroll;

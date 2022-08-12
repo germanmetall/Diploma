@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-  		<Header></Header>
+  		<landingHeader></landingHeader>
 
 		<main class="main">
 			<section class="screen" v-if="texts">
@@ -26,15 +26,15 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+import landingHeader from "../components/landingHeader.vue";
 let md = require('markdown-it')({
 	html: true
 });
 
 export default {
-  	name: 'Home',
+  	name: 'landingHome',
 	components: {
-		Header
+		landingHeader
 	},
 	data: function() {
 		return {
@@ -42,7 +42,7 @@ export default {
 		};
 	},
 	mounted: async function() {
-		let resp = await this.$options.API.data().Text.get();
+		let resp = await this.$options.landingAPI.data().Text.get();
 		let body = await resp.json();
 		this.texts = [
 			body.data.attributes["Main_1"],

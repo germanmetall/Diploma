@@ -1,4 +1,13 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+
+// landing
+import landingHome from '../views/landingHome.vue'
+import landingCourses from '../views/landingCourses.vue'
+import landingCourse from '../views/landingCourse.vue'
+import FAQ from '../views/FAQ.vue'
+import Contacts from '../views/Contacts.vue'
+
+// platform
 import Auth from '../views/Auth.vue'
 import Home from '../views/Home.vue'
 import Course from '../views/Course.vue'
@@ -8,16 +17,9 @@ import Tasks from '../views/Tasks.vue'
 import Hint from '../views/Hint.vue'
 
 const routes = [
+  // platform
   {
-    path: '/auth',
-    name: 'Auth',
-    component: Auth,
-    meta: {
-      title: "Вхід"
-    }
-  },
-  {
-    path: '/',
+    path: "/platform",
     name: 'Home',
     component: Home,
     meta: {
@@ -25,7 +27,15 @@ const routes = [
     }
   },
   {
-    path: '/courses',
+    path: '/platform/auth',
+    name: 'Auth',
+    component: Auth,
+    meta: {
+      title: "Вхід"
+    }
+  },
+  {
+    path: '/platform/courses',
     name: 'Courses',
     component: Courses,
     meta: {
@@ -33,7 +43,7 @@ const routes = [
     }
   },
   {
-    path: '/course/:id',
+    path: '/platform/course/:id',
     name: 'Course',
     component: Course,
     meta: {
@@ -41,7 +51,7 @@ const routes = [
     }
   },
   {
-    path: '/profile',
+    path: '/platform/profile',
     name: 'Profile',
     component: Profile,
     meta: {
@@ -49,7 +59,7 @@ const routes = [
     }
   },
   {
-    path: '/course/:courseId/tasks/:id',
+    path: '/platform/course/:courseId/tasks/:id',
     name: 'Tasks',
     component: Tasks,
     meta: {
@@ -57,11 +67,52 @@ const routes = [
     }
   },
   {
-    path: '/hint',
+    path: '/platform/hint',
     name: 'Hint',
     component: Hint,
     meta: {
       title: "Довідка"
+    }
+  },
+  // landing
+  {
+    path: "/",
+    name: 'landingHome',
+    component: landingHome,
+    meta: {
+      title: 'Головна'
+    }
+  },
+  {
+    path: '/courses',
+    name: 'landingCourses',
+    component: landingCourses,
+    meta: {
+      title: 'Курси'
+    }
+  },
+  {
+    path: '/course/:id',
+    name: 'landingCourse',
+    component: landingCourse,
+    meta: {
+      title: 'Курси'
+    }
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    component: FAQ,
+    meta: {
+      title: 'Питання'
+    }
+  },
+  {
+    path: '/contacts',
+    name: 'Contacts',
+    component: Contacts,
+    meta: {
+      title: 'Контакти'
     }
   }
 ]
@@ -73,7 +124,8 @@ const router = createRouter({
 
 const DEFAULT_TITLE = 'Курси';
 router.beforeEach((to, from, next) => {
-  if ((localStorage.getItem("jwt")==undefined || localStorage.getItem("jwt")=="") && to.name !== 'Auth') {
+  console.log(to.fullPath.startsWith("/platform"), localStorage.getItem("jwt"));
+  if (to.fullPath.startsWith("/platform") && (localStorage.getItem("jwt")==undefined || localStorage.getItem("jwt")=="") && to.name !== 'Auth') {
     next({ name: 'Auth' })
   }
   document.title = to.meta.title || DEFAULT_TITLE;

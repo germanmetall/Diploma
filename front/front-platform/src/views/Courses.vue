@@ -28,7 +28,7 @@ export default {
 		};
 	},
 	mounted: async function() {
-		this.courses = await this.$options.API.data().Courses.getMine();
+		this.courses = await this.$options.platformAPI.data().Courses.getMine();
 		console.log(this.courses);
 	}
 }
@@ -43,6 +43,46 @@ export default {
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
+}
+.course{
+	@include card();
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 24px;
+	background: map-get($colors, "bg1");
+	&__description{
+		font-size: 1.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 6vh;
+		padding: 24px 0;
+		background: map-get($colors, "bg3");
+	}
+	&__tab{
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 24px 0;
+		background: map-get($colors, "bg1");
+		&.active{
+			display: flex;
+		}
+	}
+	&__teacherAvatar{
+		z-index: 5;
+		position: absolute;
+		top: 48px;
+		right: 48px;
+		width: 100px;
+		border-radius: 50%;
+	}
 }
 .course{
 	@include card();

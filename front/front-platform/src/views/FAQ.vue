@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-  		<Header></Header>
+  		<landingHeader></landingHeader>
 		<main class="main">
 			<section class="FAQ" v-if="questions">
 				<article class="question" v-for="(question, counter) of questions" :key="question" @click="toggleQuestion(counter)">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+import landingHeader from "../components/landingHeader.vue";
 let md = require('markdown-it')({
 	html: true
 });
@@ -21,7 +21,7 @@ let md = require('markdown-it')({
 export default {
   	name: 'FAQ',
 	components: {
-		Header
+		landingHeader
 	},
 	methods: {
 		toggleQuestion(counter){
@@ -41,7 +41,7 @@ export default {
 		}
 	},
 	mounted: async function() {
-		let resp = await this.$options.API.data().FAQ.get();
+		let resp = await this.$options.landingAPI.data().FAQ.get();
 		let body = await resp.json();
 		this.questions = body.data;
 		this.questions.map(el => {

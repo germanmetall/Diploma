@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-  		<Header></Header>
+  		<landingHeader></landingHeader>
 
 		<main class="main" v-if="courses">
 			<article class="course" v-for="course of courses" :key="course">
@@ -9,7 +9,7 @@
 				<section class="course__info">
 					<span class="course__text" v-html="course.attributes.Description_short"></span>
 					<span class="course__price">{{course.attributes.Price}}</span>
-					<router-link :to="{ name: 'Course', params: { id: course.id }}" class="course__more">Більше</router-link>
+					<router-link :to="{ name: 'landingCourse', params: { id: course.id }}" class="course__more">Більше</router-link>
 				</section>
 			</article>
 		</main>
@@ -17,15 +17,15 @@
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+import landingHeader from "../components/landingHeader.vue";
 let md = require('markdown-it')({
 	html: true
 });
 
 export default {
-  	name: 'Courses',
+  	name: 'landingCourses',
 	components: {
-		Header
+		landingHeader
 	},
 	data: function(){
 		return {
@@ -33,7 +33,8 @@ export default {
 		}
 	},
 	mounted: async function(){
-		let resp = await this.$options.API.data().Courses.get();
+		console.log(this.$options);
+		let resp = await this.$options.landingAPI.data().Courses.get();
 		let body = await resp.json();
 		console.log(body);
 		this.courses = body.data;

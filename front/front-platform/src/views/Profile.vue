@@ -49,7 +49,7 @@ export default {
 		};
 	},
 	mounted: async function() {
-		let resp = await this.$options.API.data().Profile.me();
+		let resp = await this.$options.platformAPI.data().Profile.me();
 		let body = await resp.json();
 		console.log(body);
 		this.profile = {
@@ -64,7 +64,7 @@ export default {
 		async save(){
 			let username = document.querySelector(".profile__name").value,
 				contacts = document.querySelector(".profile__contacts").value;
-			let resp = await this.$options.API.data().Profile.update(username, contacts);
+			let resp = await this.$options.platformAPI.data().Profile.update(username, contacts);
 			let body = await resp.json();
 			console.log(body);
 			this.profile = {
