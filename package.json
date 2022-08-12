@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "heroku-postbuild": "cd CMS && npm i",
+        "heroku-postbuild": "cd CMS && npm i && npm run build",
         "start": "cd CMS && npm run start",
         "CMS": "cd CMS && npm run develop",
         "serve-landing": "cd front/front-landing && npm run serve",
