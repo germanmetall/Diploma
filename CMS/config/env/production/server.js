@@ -1,5 +1,5 @@
 module.exports = ({ env }) => ({
-    url: env('MY_HEROKU_URL'),
-    host: env('HOST', 'polonska-diploma.herokuapp.com'),
+    url: env('MY_HEROKU_URL', 'https://polonska-diploma.herokuapp.com/'),
+    host: env('HOST', '0.0.0.0'),
     port: env.int('PORT', 1337),
 });
