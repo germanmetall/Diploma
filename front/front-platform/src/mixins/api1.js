@@ -56,7 +56,7 @@ class Contacts {
 
 const landingAPI = {
     data() {
-        let path = "https://apcenter.online:1337/api";
+        let path = "https://polonska-diploma.herokuapp.com/api";
         return {
             Text: new MainTexts(path),
             Courses: new Courses(path),

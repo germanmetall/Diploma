@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 let jwt;
-const localPath = "http://localhost:1337/api";
+const localPath = "https://polonska-diploma.herokuapp.com/api";
 
 async function auth(){
     return await fetch(`${localPath}/auth/local`, {

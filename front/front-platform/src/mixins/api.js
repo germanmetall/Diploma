@@ -229,7 +229,7 @@ class Tasks {
 }
 const platformAPI = {
     data() {
-        let path = "https://apcenter.online:1337/api";
+        let path = "https://polonska-diploma.herokuapp.com/api";
         return {
             Auth: new Auth(path),
             Courses: new Courses(path),
