@@ -4,21 +4,24 @@
 		<main class="main">
 			<article class="course" v-if="course">
 				<span class="heading heading--medium">{{course.attributes.Heading}}</span>
-				<img class="course__teacher" v-if="course.attributes.Icon" :src="'http://localhost:1337'+course.attributes.Icon.data.attributes.url"/>
+				<img class="course__teacher" v-if="course.attributes.Icon" :src="'https://polonska-diploma.herokuapp.com'+course.attributes.Icon.data.attributes.url"/>
 				<section class="course__info">
-					<span class="course__text" v-html="course.attributes.Description_long"></span>
+					<p class="course__text" v-html="course.attributes.Description_long"></p>
 					<span class="course__price">{{course.attributes.Price}}</span>
 					<!-- Оплата -->
 					<div class="course__pay">
-						Оплатить
+						Сплатити
 					</div>
 				</section>
 			</article>
 		</main>
 	</div>
+
+	<Spinner v-if="loading"></Spinner>
 </template>
 
 <script>
+import Spinner from "../components/Spinner.vue";
 import landingHeader from "../components/landingHeader.vue";
 let md = require('markdown-it')({
 	html: true
@@ -27,13 +30,15 @@ let md = require('markdown-it')({
 export default {
   	name: 'landingCourse',
 	components: {
-		landingHeader
+		landingHeader,
+		Spinner
 	},
 	data: function() {
 		return {
 			id: this.$route.params.id,
 			payData: undefined,
-			course: undefined
+			course: undefined,
+			loading: undefined
 		};
 	},
 	methods: {
@@ -45,8 +50,12 @@ export default {
 		}
 	},
 	mounted: async function() {
+		setTimeout(()=>{
+			if(this.loading === undefined) this.loading = true;
+		}, 1000);
 		let resp = await this.$options.landingAPI.data().Courses.getById(this.id);
 		let body = await resp.json();
+		this.loading = false;
 		this.course = body.data;
 		this.course.attributes['Description_long'] = md.render(this.course.attributes['Description_long']);
 		document.title = this.course.attributes.Heading;
@@ -85,6 +94,7 @@ export default {
 	}
 	&__text{
 		font-size: 1.25rem;
+		padding: 6px 24px;
 	}
 	&__price, &__pay{
 		position: relative;
@@ -100,6 +110,24 @@ export default {
 	}
 	&__pay{
 		width: 40%;
+	}
+}
+@media screen and (max-width: 600px){
+	.main{
+		padding-top: 96px;
+		.course{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			&__teacher{
+				width: 60%;
+				height: unset;
+				aspect-ratio: 1/1;
+				top: unset;
+				right: unset;
+				position: relative;
+			}
+		}
 	}
 }
 </style>

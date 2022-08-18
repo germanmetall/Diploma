@@ -4,7 +4,6 @@
     "private": true,
     "scripts": {
         "heroku-postbuild": "cd CMS && npm i && npm run build",
-        "start": "cd CMS && npm run start",
         "CMS": "cd CMS && npm run develop",
         "serve-landing": "cd front/front-landing && npm run serve",
         "serve-platform": "cd front/front-platform && npm run serve",

@@ -8,31 +8,43 @@
 					<!-- @click="$router.push({ name: 'Course', params: { id: course.id }})" -->
                     <span class="course__name heading heading--medium">{{course.attributes.Name}}</span>
                     <span class="course__info">{{course.attributes.Schedule}}</span>
-                    <img v-if="course.attributes.Avatar.data" :src="'http://localhost:1337'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
+                    <img v-if="course.attributes.Avatar.data" :src="'https://polonska-diploma.herokuapp.com'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
                 </article>
             </section>
 
 		</main>
 	</div>
+
+	<Spinner v-if="loading"></Spinner>
 </template>
 
 <script>
 import Header from "../components/Header.vue";
+import Spinner from "../components/Spinner.vue";
 export default {
   	name: 'Home',
 	components: {
-		Header
+		Header,
+		Spinner
 	},
 	data: function() {
 		return {
-			courses: undefined
+			courses: undefined,
+			loading: undefined
 		};
 	},
 	mounted: async function() {
+		setTimeout(()=>{
+			if(this.loading === undefined) this.loading = true;
+		}, 1000);
 		let resp = await this.$options.platformAPI.data().Courses.get();
 		let body = await resp.json();
-		this.courses = body.data;
+		this.loading = false;
+		if(body.error && body.error.status === 401){
+			this.$router.push("/platform/auth");
+		}
 		console.log(body);
+		this.courses = body.data;
 	}
 }
 </script>

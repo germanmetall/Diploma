@@ -4,7 +4,7 @@
 
 		<main class="main" v-if="courses">
 			<article class="course" v-for="course of courses" :key="course">
-				<img class="course__teacher" v-if="course.attributes.Icon" :src="'http://localhost:1337'+course.attributes.Icon.data.attributes.url"/>
+				<img class="course__teacher" v-if="course.attributes.Icon" :src="'https://polonska-diploma.herokuapp.com'+course.attributes.Icon.data.attributes.url"/>
 				<span class="heading heading--medium">{{course.attributes.Heading}}</span>
 				<section class="course__info">
 					<span class="course__text" v-html="course.attributes.Description_short"></span>
@@ -14,10 +14,13 @@
 			</article>
 		</main>
 	</div>
+
+	<Spinner v-if="loading"></Spinner>
 </template>
 
 <script>
 import landingHeader from "../components/landingHeader.vue";
+import Spinner from "../components/Spinner.vue";
 let md = require('markdown-it')({
 	html: true
 });
@@ -25,17 +28,23 @@ let md = require('markdown-it')({
 export default {
   	name: 'landingCourses',
 	components: {
-		landingHeader
+		landingHeader,
+		Spinner
 	},
 	data: function(){
 		return {
-			courses: undefined
+			courses: undefined,
+			loading: undefined
 		}
 	},
 	mounted: async function(){
+		setTimeout(()=>{
+			if(this.loading === undefined) this.loading = true;
+		}, 1000);
 		console.log(this.$options);
 		let resp = await this.$options.landingAPI.data().Courses.get();
 		let body = await resp.json();
+		this.loading = false;
 		console.log(body);
 		this.courses = body.data;
 		this.courses.map(el => {
@@ -49,7 +58,7 @@ export default {
 @import "../../../styles/global.scss";
 .main{
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 48px;
 }
 
@@ -101,10 +110,23 @@ export default {
 			background: map-get($colors, "bg3");
 		}
 	}
+}
 
-	&:hover{
-		.heading{
-			padding: 0 48px 8px;
+@media screen and (max-width: 600px){
+	.main{
+		padding-top: 96px;
+		grid-template-columns: auto;
+		.course{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			&__teacher{
+				width: 60%;
+				height: 60%;
+				top: unset;
+				right: unset;
+				position: relative;
+			}
 		}
 	}
 }

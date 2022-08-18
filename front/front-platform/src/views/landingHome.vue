@@ -6,27 +6,30 @@
 			<section class="screen" v-if="texts">
 				<article class="article">
 					<span class="article__text" v-html="texts[0]"></span>
-					<img class="article__img" src="https://dovidka.biz.ua/wp-content/uploads/2021/06/mif-pro-afinu-skorocheno.jpg" alt=""/>
+					<img class="article__img" v-if="imgs[0]" :src="imgs[0].data.attributes.url"/>
 				</article>
 			</section>
 			<section class="screen" v-if="texts">
 				<article class="article">
 					<span class="article__text" v-html="texts[1]"></span>
-					<img class="article__img" src="https://www.dlit.dp.ua/wp-content/uploads/2021/04/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%94%D0%B2-%D0%A1.%D0%91.png" alt=""/>
+					<img class="article__img" v-if="imgs[1]" :src="imgs[1].data.attributes.url"/>
 				</article>
 			</section>
 			<section class="screen" v-if="texts">
 				<article class="article">
 					<span class="article__text" v-html="texts[2]"></span>
-					<img class="article__img" src="https://image.shutterstock.com/image-vector/graduation-hat-diploma-isolated-on-260nw-1933030322.jpg" alt=""/>
+					<img class="article__img" v-if="imgs[2]" :src="imgs[2].data.attributes.url"/>
 				</article>
 			</section>
 		</main>
 	</div>
+
+	<Spinner v-if="loading"></Spinner>
 </template>
 
 <script>
 import landingHeader from "../components/landingHeader.vue";
+import Spinner from "../components/Spinner.vue";
 let md = require('markdown-it')({
 	html: true
 });
@@ -34,21 +37,29 @@ let md = require('markdown-it')({
 export default {
   	name: 'landingHome',
 	components: {
-		landingHeader
+		landingHeader,
+		Spinner
 	},
 	data: function() {
 		return {
-			texts: undefined
+			texts: undefined,
+			imgs: [],
+			loading: undefined
 		};
 	},
 	mounted: async function() {
+		setTimeout(()=>{
+			if(this.loading === undefined) this.loading = true;
+		}, 1000);
 		let resp = await this.$options.landingAPI.data().Text.get();
 		let body = await resp.json();
+		this.loading = false;
 		this.texts = [
 			body.data.attributes["Main_1"],
 			body.data.attributes["Main_2"],
 			body.data.attributes["Main_3"],
 		];
+		if(body.data.attributes["Medias"]) this.imgs = body.data.attributes["Medias"];
 		this.texts = this.texts.map(el => md.render(el));
 	}
 }

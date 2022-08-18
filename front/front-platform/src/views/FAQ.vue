@@ -10,10 +10,13 @@
 			</section>
 		</main>
 	</div>
+
+	<Spinner v-if="loading"></Spinner>
 </template>
 
 <script>
 import landingHeader from "../components/landingHeader.vue";
+import Spinner from "../components/Spinner.vue";
 let md = require('markdown-it')({
 	html: true
 });
@@ -21,7 +24,8 @@ let md = require('markdown-it')({
 export default {
   	name: 'FAQ',
 	components: {
-		landingHeader
+		landingHeader,
+		Spinner
 	},
 	methods: {
 		toggleQuestion(counter){
@@ -37,13 +41,18 @@ export default {
 	},
 	data: function(){
 		return {
-			questions: undefined
+			questions: undefined,
+			loading: undefined
 		}
 	},
 	mounted: async function() {
+		setTimeout(()=>{
+			if(this.loading === undefined) this.loading = true;
+		}, 1000);
 		let resp = await this.$options.landingAPI.data().FAQ.get();
 		let body = await resp.json();
 		this.questions = body.data;
+		this.loading = false;
 		this.questions.map(el => {
 			el.attributes["Answer"] = md.render(el.attributes["Answer"]);
 		});
@@ -73,6 +82,15 @@ export default {
   		overflow:hidden;
 		transition: map-get($transitions, "medium");
 		font-size: 1.25rem;
+	}
+}
+@media screen and (max-width: 600px){
+	.main{
+		padding-top: 96px;
+		.question{
+			width: 96%;
+			padding: 12px;
+		}
 	}
 }
 </style>

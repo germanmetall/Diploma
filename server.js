@@ -94,4 +94,10 @@ app.post('/', async function (req, res) {
     res.send("ok");
 })
 
-app.listen(3000)
+app.get('/', async function (req, res) {
+    res.send("yes, it's me");
+})
+
+let port = process.argv[2];
+
+app.listen(port)

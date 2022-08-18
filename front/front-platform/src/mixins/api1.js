@@ -4,7 +4,7 @@ class MainTexts {
     }
 
     async get(){
-        return await fetch(`${this.localPath}`);
+        return await fetch(`${this.localPath}?populate[0]=medias`);
     }
 }
 
@@ -14,10 +14,10 @@ class Courses {
     }
 
     async get(){
-        return await fetch(`${this.localPath}`);
+        return await fetch(`${this.localPath}?populate[0]=Icon`);
     }
     async getById(id){
-        return await fetch(`${this.localPath}/${id}`);
+        return await fetch(`${this.localPath}/${id}?populate[0]=Icon`);
     }
 }
 

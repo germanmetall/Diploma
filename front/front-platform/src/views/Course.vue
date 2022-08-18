@@ -32,7 +32,7 @@
                         <span class="material__name heading heading--small">{{material.attributes.Name}}</span>
                         <span class="material__text">{{material.attributes.Text}}</span>
 						
-						<div class="file" v-for="file of material.attributes.Included_files.data" :key="file" @click="donwloadFromUrl(`http://localhost:1337${file.attributes.url}`, file.attributes.name)">
+						<div class="file" v-for="file of material.attributes.Included_files.data" :key="file" @click="donwloadFromUrl(`https://polonska-diploma.herokuapp.com${file.attributes.url}`, file.attributes.name)">
 							<img class="file__img" src=""/>
 							<span class="file__name">{{file.attributes.name}}</span>
 						</div>
@@ -47,7 +47,7 @@
 				<div class="course__tab">
 
 					<article class="student" v-for="student of course.attributes.students.data" :key="student">
-						<img class="student__avatar" v-if="student.attributes.avatar.data" :src="'http://localhost:1337'+student.attributes.avatar.data[0].attributes.url"/>
+						<img class="student__avatar" v-if="student.attributes.avatar.data" :src="'https://polonska-diploma.herokuapp.com'+student.attributes.avatar.data[0].attributes.url"/>
                         <span class="student__name heading heading--small">{{student.attributes.username}}</span>
                     </article>
 
@@ -104,11 +104,16 @@ export default {
 	mounted: async function() {
 		let resp = await this.$options.platformAPI.data().Courses.getById(this.id);
 		let body = await resp.json();
+
+		if(body.error && body.error.status === 401){
+			this.$router.push("/platform/auth");
+		}
+		
 		this.course = body.data;
 		console.log(this.course);
 		resp = await this.$options.platformAPI.data().Courses.getAvatar(this.id);
 		body = await resp.json();
-		if(body.data.attributes.Avatar.data) this.teacherAvatar = 'http://localhost:1337'+body.data.attributes.Avatar.data.attributes.url;
+		if(body.data.attributes.Avatar.data) this.teacherAvatar = 'https://polonska-diploma.herokuapp.com'+body.data.attributes.Avatar.data.attributes.url;
 	}
 }
 </script>

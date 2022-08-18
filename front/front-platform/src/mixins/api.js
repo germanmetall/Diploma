@@ -213,7 +213,7 @@ class Tasks {
             };
         }
 
-        resp = await fetch("http://localhost:3000/",{
+        resp = await fetch("https://polonska-diploma.herokuapp.com:1338",{
             method: "POST",
             headers: {
                 "Content-type":"application/json"

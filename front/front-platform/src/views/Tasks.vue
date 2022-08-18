@@ -142,6 +142,9 @@ export default {
 	mounted: async function() {
 		let resp = await this.$options.platformAPI.data().Tasks.getById(this.id);
 		let body = await resp.json();
+		if(body.error && body.error.status === 401){
+			this.$router.push("/platform/auth");
+		}
         console.log(body);
         this.name = body.data.attributes.Name;
         this.questions = body.data.attributes.platform_tasks.data;

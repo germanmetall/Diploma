@@ -49,12 +49,14 @@ export default {
 
 			let {mail, password} = isValid;
 
+			alert("Зачекайте, будь ласка");
+
 			let resp = await this.$options.platformAPI.data().Auth.login(mail, password);
 			let body = await resp.json();
 			if(body.jwt){
 				alert("Ви успішно увійшли до системи");
 				localStorage.setItem("jwt", body.jwt);
-				this.$router.push("/");
+				this.$router.push("/platform");
 			}
 			else{
 				alert("Помилка. Перевірте правильність логіна чи паролю");

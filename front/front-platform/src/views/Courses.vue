@@ -7,7 +7,7 @@
                 <article class="course" v-for="course of courses" :key="course" @click="$router.push({ name: 'Course', params: { id: course.id }})">
                     <span class="course__name heading heading--medium">{{course.attributes.Name}}</span>
                     <span class="course__info">{{course.attributes.Schedule}}</span>
-                    <img v-if="course.attributes.Avatar.data" :src="'http://localhost:1337'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
+                    <img v-if="course.attributes.Avatar.data" :src="'https://polonska-diploma.herokuapp.com'+course.attributes.Avatar.data.attributes.url" class="course__img"/>
                 </article>
             </section>
 
@@ -29,7 +29,10 @@ export default {
 	},
 	mounted: async function() {
 		this.courses = await this.$options.platformAPI.data().Courses.getMine();
-		console.log(this.courses);
+
+        if(this.courses.error && this.courses.error.status === 401){
+			this.$router.push("/auth");
+		} 
 	}
 }
 </script>

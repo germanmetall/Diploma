@@ -124,8 +124,11 @@ const router = createRouter({
 
 const DEFAULT_TITLE = 'Курси';
 router.beforeEach((to, from, next) => {
-  console.log(to.fullPath.startsWith("/platform"), localStorage.getItem("jwt"));
-  if (to.fullPath.startsWith("/platform") && (localStorage.getItem("jwt")==undefined || localStorage.getItem("jwt")=="") && to.name !== 'Auth') {
+  if (
+    to.fullPath.startsWith("/platform") && 
+    (localStorage.getItem("jwt")==undefined || localStorage.getItem("jwt")=="") && 
+    to.name !== 'Auth'
+  ) {
     next({ name: 'Auth' })
   }
   document.title = to.meta.title || DEFAULT_TITLE;

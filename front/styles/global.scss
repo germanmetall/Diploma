@@ -42,12 +42,15 @@ body{
 .heading{
     font-family: "Playfair-Medium";
     &--small{
-        font-size: 1.75rem;
+        font-size: 28px;
+        line-height: 40px;
     }
     &--medium{
-        font-size: 2.25rem;
+        font-size: 36px;
+        line-height: 56px;
     }
     &--big{
-        font-size: 3rem;
+        font-size: 48px;
+        line-height: 80px;
     }
 }

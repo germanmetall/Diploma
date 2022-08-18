@@ -67,6 +67,11 @@ export default {
 			let resp = await this.$options.platformAPI.data().Profile.update(username, contacts);
 			let body = await resp.json();
 			console.log(body);
+			
+			if(body.error && body.error.status === 401){
+				this.$router.push("/platform/auth");
+			}
+			
 			this.profile = {
 				name: username,
 				contacts: contacts
